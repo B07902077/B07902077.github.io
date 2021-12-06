@@ -87,25 +87,6 @@ var ken = '<datalist id="datalistOptions">';
 var namelist = ['', ''];
 var bookkendata = "";
 var arrowtext = "";
-/*
-for (i = 0; i < timedata.length; i++) {
-    if (i < 12)
-        namelist[0] += '<a href="javascript:setPage(' + (8 + i) + ')" style="font-size: 2.5vh;text-decoration:none;color:darkslategrey;">' + (i + 1) + '.' + timedata[i][0] + '(' + timedata[i][3] + ')</a><br>';
-    else {
-        namelist[1] += '<a href="javascript:setPage(' + (8 + i) + ')" style="font-size:2.5vh;text-decoration:none;color:darkslategrey;">' + (i + 1) + '.' + timedata[i][0] + '(' + timedata[i][3] + ')</a><br>';
-    }
-    bookkendata += '<div style="background-image:url(reclamation/paper.jpg)"><div class="fb7-cont-page-book"><div class="fb7-page-book"><h1 style="font-size: 6vh;">' + timedata[i][0] + '(' + timedata[i][3] + ')</h1><p style="font-size: 2.8vh;">' + timedata[i][4] + '</p></div><div class="fb7-meta"><span class="fb7-num">' + (8 + i) + '</span></div></div></div>';
-    if (i % 2 == 0)
-        arrowtext += '<li data-address="page' + (8 + i) + '-page' + (9 + i) + '" data-page="' + (8 + i) + '"></li><li data-address="page' + (8 + i) + '-page' + (9 + i) + '" data-page="' + (9 + i) + '"></li>';
-}
-arrowtext += '<li data-address="end" data-page="' + (8 + timedata.length) + '"></li>';
-$("#mapbookindexdata1").html(namelist[0]);
-$("#mapbookindexdata2").html(namelist[1]);
-var bookcontent = $("#navigationbook").html().split('<!--asdfghjkl-->');
-$("#navigationbook").html(bookcontent[0] + bookkendata + bookcontent[1]);
-var arrow = $("#mapbookindex").html().split('<!--qwertyuiop-->');
-$("#mapbookindex").html(arrow[0] + arrowtext + arrow[1]);
-*/
 
 for (i = 0; i < ccdata.length; i++) {
     ken += '\n<option id="searchinput' + i + '" value="' + ccdata[i][0] + '">';
