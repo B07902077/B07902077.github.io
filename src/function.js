@@ -12,7 +12,7 @@ function readTextFile(file) {
     }
     rawFile.send(null);
 }
-readTextFile("reclamation/reclamation.txt")
+readTextFile("src/reclamation.txt")
 var data = readget.split('\n');
 var cdata = [];
 for (i = 0; i < data.length; i++) {
