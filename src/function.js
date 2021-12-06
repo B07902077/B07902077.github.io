@@ -178,10 +178,7 @@ $("#exampleDataList").change(function () {
             if (ccdata[i][0] == $("#exampleDataList").val()) {
                 map.getView().animate({ center: ol.proj.fromLonLat([parseFloat(ccdata[i][2]), parseFloat(ccdata[i][1])]), zoom: 15, duration: 2000 })
                 $('#reclamationcontent').html(
-                    <>
-                        <div> {ccdata[i][0]} </div>
-                        <div> {ccdata[i][4]} </div>
-                    </>
+                    ccdata[i][0] + "\n" + ccdata[i][4]
                     );
                 $("#staticBackdropLabel").html(ccdata[i][0] + "(" + ccdata[i][3] + ")")
                 $("#launch").click();
