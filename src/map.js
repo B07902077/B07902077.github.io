@@ -2,27 +2,7 @@
  * Created by Epulari T on 3/16/2017.
  */
 
-/** set map
- * para
- * var gotomap = new classGotoMap({
-        mapTarget: 'map',
-        mapSouce: new ol.source.OSM(),
-        mapCenter: [0, 0],
-        mapZoom: 2
-    });
- */
-var map;/* = new ol.Map({
-    target: 'map',
-    layers: [
-      new ol.layer.Tile({
-        source: new ol.source.OSM()
-      })
-    ],
-    view: new ol.View({
-      center: ol.proj.fromLonLat([120.6718112, 23.7502971]),
-      zoom: 8
-    })
-  });*/
+var map;
 var classGotoMap = function (mapOptions) {
     var mapSettiings = $.extend({
         mapTarget: 'map',

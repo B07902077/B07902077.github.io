@@ -3,7 +3,6 @@
   ////CONFIGURATION
   var WIDTH_BOOK           			//WIDTH BOOK
   var HEIGHT_BOOK						//HEIGHT BOOK
-  var BOOK_SLUG;						//SLUG FOR BOOK
   var WINDOW_WIDTH;                   //WIDTH AREA [px]
   var WINDOW_HEIGHT;                  //HEIGHT AREA [px]
   var ZOOM_STEP 		        		//STEPS SIZE FOR ZOOM
