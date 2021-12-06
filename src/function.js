@@ -17,13 +17,8 @@ var data = readget.split('\n');
 var cdata = [];
 for (i = 0; i < data.length; i++) {
     c = data[i].split(',');
-    console.log(c);
-    console.log(c[0].length);
-    console.log(c[1].length);
-    console.log(c[2].length);
-    console.log(c[3].length);
+    // console.log(c);
     var len = c[0].length + c[1].length + c[2].length + c[3].length;
-    console.log(len)
     var get = [c[0], parseFloat(c[1]), parseFloat(c[2]), parseInt(c[3]), data[i].substr(len + 4)];
     cdata.push(get)
 }
@@ -45,6 +40,7 @@ for (i = 0; i < cdata.length; i++) {
     basicmax = basic;
     ccdata.push(cdata[choose]);
 }
+console.log(ccdata);
 var timedata = [];
 var basicmin = 1600;
 for (i = 0; i < cdata.length; i++) {
@@ -91,6 +87,7 @@ var ken = '<datalist id="datalistOptions">';
 var namelist = ['', ''];
 var bookkendata = "";
 var arrowtext = "";
+/*
 for (i = 0; i < timedata.length; i++) {
     if (i < 12)
         namelist[0] += '<a href="javascript:setPage(' + (8 + i) + ')" style="font-size: 2.5vh;text-decoration:none;color:darkslategrey;">' + (i + 1) + '.' + timedata[i][0] + '(' + timedata[i][3] + ')</a><br>';
@@ -108,6 +105,8 @@ var bookcontent = $("#navigationbook").html().split('<!--asdfghjkl-->');
 $("#navigationbook").html(bookcontent[0] + bookkendata + bookcontent[1]);
 var arrow = $("#mapbookindex").html().split('<!--qwertyuiop-->');
 $("#mapbookindex").html(arrow[0] + arrowtext + arrow[1]);
+*/
+
 for (i = 0; i < ccdata.length; i++) {
     ken += '\n<option id="searchinput' + i + '" value="' + ccdata[i][0] + '">';
     var pos = [parseFloat(ccdata[i][2]), parseFloat(ccdata[i][1])];
