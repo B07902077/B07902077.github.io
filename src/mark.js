@@ -22,7 +22,7 @@ class mapMark{
                 anchor:[0.5,1],
                 src: 'src/icon.png',
                 img: undefined,
-                scale: 0.1
+                scale: 0.075
             }))
         });
         this.iconFeature.setStyle(iconStyle);
