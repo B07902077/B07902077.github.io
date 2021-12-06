@@ -1,0 +1,43 @@
+#operation {
+	position: absolute;
+	left: 50vh;
+	top: 30vh;
+	width: 35vh;
+	height: 15vh;
+	background: transparent;
+}
+
+.operation ul {
+	list-style-type: none;
+}
+
+.operation button {
+	width: 150px;
+	height: 22px;
+	margin-bottom: 2px;
+	margin-top: 2px;
+	margin-left: -15px;
+}
+
+#valBox {
+	cursor: move;
+}
+
+#navigation {
+	position: fixed;
+	top: 1vh;
+	right: 20vw;
+	width: 5vw;
+	font-size: 2.5vh;
+	height: 6vh;
+}
+
+#exampleDataList {
+	position: fixed;
+	top: 1vh;
+	right: 1vw;
+	width: 18vw;
+	height: 6vh;
+	font-size: 2.5vh;
+	background-color: transparent;
+}
