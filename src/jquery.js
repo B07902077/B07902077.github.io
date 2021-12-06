@@ -8491,6 +8491,7 @@
           script.src = s.url;
   
           // Attach handlers for all browsers
+          
           script.onload = script.onreadystatechange = function( _, isAbort ) {
   
             if ( isAbort || !script.readyState || /loaded|complete/.test( script.readyState ) ) {
