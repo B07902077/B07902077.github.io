@@ -117,9 +117,9 @@ for (i = 0; i < ccdata.length; i++) {
         for (j = 0; j < markbox.length; j++) {
             if (getdp(markbox[j].pos, pos) < distance) {
                 distance = getdp(markbox[j].pos, pos);
-                $('#villagename').html(ccdata[i][0]);
-                $('#villagetime').html(ccdata[i][3]);
-                $('#villagecontent').html(ccdata[i][4]);
+                $('#villagename').html(ccdata[j][0]);
+                $('#villagetime').html(ccdata[j][3]);
+                $('#villagecontent').html(ccdata[j][4]);
                 $("#staticBackdropLabel").html(ccdata[j][0] + "(" + ccdata[j][3] + ")")
             }
         }
