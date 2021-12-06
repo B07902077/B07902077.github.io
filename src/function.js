@@ -114,15 +114,18 @@ for (i = 0; i < ccdata.length; i++) {
     mark.addEvtClick(function (coordinate) {
         var pos = ol.proj.transform(coordinate, 'EPSG:3857', 'EPSG:4326');
         var distance = 1;
+        var min_index = 0;
         for (j = 0; j < markbox.length; j++) {
             if (getdp(markbox[j].pos, pos) < distance) {
                 distance = getdp(markbox[j].pos, pos);
-                $('#villagename').html(ccdata[j][0]);
-                $('#villagetime').html(ccdata[j][3]);
-                $('#villagecontent').html(ccdata[j][4]);
-                $("#staticBackdropLabel").html(ccdata[j][0] + "(" + ccdata[j][3] + ")")
+                min_index = j;
             }
         }
+        $('#villagename').html(ccdata[min_index][0]);
+        $('#villagetime').html(ccdata[min_index][3]);
+        $('#villagecontent').html(ccdata[min_index][4]);
+        $("#staticBackdropLabel").html(ccdata[min_index][0] + "(" + ccdata[min_index][3] + ")");
+
         $("#launch").click();
     });
     mark.create();
