@@ -19,7 +19,7 @@ class mapMark{
     create(){
         var iconStyle = new ol.style.Style({
             image: new ol.style.Icon(/** @type {olx.style.IconOptions} **/({
-                anchor:[0.05,1],
+                anchor:[0.5,1],
                 src: 'src/icon.png',
                 img: undefined,
                 scale: 0.05
