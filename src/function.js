@@ -217,16 +217,3 @@ function dragElement(elmnt) {
         document.onmousemove = null;
     }
 }
-/*
-var t = 0;
-$("#navigation").click(function () {
-    t += 1
-    if (t % 2 == 0)
-        $("#navigationbook").hide();
-    else {
-        $("#navigationbook").css("z-index", 100);
-        $("#navigationbook").show();
-    }
-})
-$("#navigationbook").css("z-index", -100);
-*/
