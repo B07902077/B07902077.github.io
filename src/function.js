@@ -117,7 +117,9 @@ for (i = 0; i < ccdata.length; i++) {
         for (j = 0; j < markbox.length; j++) {
             if (getdp(markbox[j].pos, pos) < distance) {
                 distance = getdp(markbox[j].pos, pos);
-                $('#reclamationcontent').html(ccdata[j][4]);
+                $('#villagename').html(ccdata[i][0]);
+                $('#villagetime').html(ccdata[i][3]);
+                $('#villagecontent').html(ccdata[i][4]);
                 $("#staticBackdropLabel").html(ccdata[j][0] + "(" + ccdata[j][3] + ")")
             }
         }
@@ -177,9 +179,9 @@ $("#exampleDataList").change(function () {
         else {
             if (ccdata[i][0] == $("#exampleDataList").val()) {
                 map.getView().animate({ center: ol.proj.fromLonLat([parseFloat(ccdata[i][2]), parseFloat(ccdata[i][1])]), zoom: 15, duration: 2000 });
-                $('#reclamationcontent').html(
-                    ccdata[i][0] + "!!!!!" + ccdata[i][4]
-                    );
+                $('#villagename').html(ccdata[i][0]);
+                $('#villagetime').html(ccdata[i][3]);
+                $('#villagecontent').html(ccdata[i][4]);
                 $("#staticBackdropLabel").html(ccdata[i][0] + "(" + ccdata[i][3] + ")");
                 $("#launch").click();
                 break;
