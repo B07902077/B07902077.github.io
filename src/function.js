@@ -190,7 +190,7 @@ $("#exampleDataList").change(function () {
     }
 });
 
-console.log("test search");
+console.log("test search 2");
 $("#DataSearch").change(function () {
     let searchWord = $("#DataSearch").val();
     let check = [];
