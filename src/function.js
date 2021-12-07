@@ -80,7 +80,7 @@ function showVal(newVal) {
                 markbox[i].create();
         }
     } else {
-        document.getElementById("valBox").innerHTML = "時間：至" + newVal;
+        document.getElementById("valBox").innerHTML = "時間：至 " + newVal;
         for (i = 0; i < markbox.length; i++) {
             if (markbox[i].year > newVal && markbox[i].shown == 1)
                 markbox[i].delete();
