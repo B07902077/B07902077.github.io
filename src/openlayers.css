@@ -39,22 +39,22 @@
 	width: 18vw;
 	height: 6vh;
 	font-size: 2.5vh;
-	background-color: transparent;
+	background-color: white;
 }
 
 #DataSearch {
 	width: 18vw;
 	height: 6vh;
 	font-size: 2.5vh;
-	background-color: transparent;
+	background-color: white;
 }
 
 #DataSearchClear {
 	width: 6.5vw;
 	height: 5vh;
 	font-size: 1.1vw;
-	background-color: transparent;
+	background-color: #ABEBC6;
 }
 #DataSearchClear:hover {
-	background-color: #D4E6F1;
+	background-color: #58D68D;
 }
