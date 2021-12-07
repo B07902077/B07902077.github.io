@@ -195,10 +195,11 @@ $("#DataSearch").change(function () {
     let searchWord = $("#DataSearch").val();
     let check = [];
     console.log('searchWord: ', searchWord);
-    
+
     for (i = 0; i < ccdata.length; i++) {
-        console.log(ccdata[i][4]);
-        if (ccdata[i][4].includes(searchWord)) check.push(1);
+        // console.log(ccdata[i][4]);
+        // 目前只搜尋 ccdata[i][4]]、ccdata[i][5]，應再新增其他欄位的搜尋。
+        if (ccdata[i][4].includes(searchWord) || ccdata[i][5].includes(searchWord)) check.push(1);
         else check.push(0);
     }
     checkArray = check;
