@@ -192,7 +192,7 @@ $("#exampleDataList").change(function () {
     }
 });
 
-console.log("test search");
+console.log("test search1");
 $("#DataSearch").change(function () {
     let searchAge = $("#exslider").val();
     let searchWord = $("#DataSearch").val();
@@ -200,6 +200,7 @@ $("#DataSearch").change(function () {
     console.log('searchWord: ', searchWord);
     
     for (i = 0; i < data.length; i++) {
+        console.log(data[i]);
         if (data[i].includes(searchWord)) check.push(1);
         else check.push(0);
     }
