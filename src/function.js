@@ -17,9 +17,10 @@ var data = readget.split('\n');
 var cdata = [];
 for (i = 0; i < data.length; i++) {
     c = data[i].split(',');
-    console.log(c);
+    // console.log(c);
     var len = c[0].length + c[1].length + c[2].length + c[3].length;
     var get = [c[0], parseFloat(c[1]), parseFloat(c[2]), parseInt(c[3]), c[4], c[5]];
+    console.log(get);
     cdata.push(get)
 }
 var markbox = [];
@@ -105,7 +106,7 @@ for (i = 0; i < ccdata.length; i++) {
         }
         $('#villagename').html(ccdata[min_index][0]);
         $('#villagetime').html(ccdata[min_index][3]);
-        $('#villagecontent').html(ccdata[min_index][4] + ccdata[min_index][5]);
+        $('#villagecontent').html(ccdata[min_index][4] + ":" + ccdata[min_index][5]);
         $("#staticBackdropLabel").html(ccdata[min_index][0] + "(" + ccdata[min_index][3] + ")");
 
         $("#launch").click();
@@ -166,7 +167,7 @@ $("#exampleDataList").change(function () {
                 map.getView().animate({ center: ol.proj.fromLonLat([parseFloat(ccdata[i][2]), parseFloat(ccdata[i][1])]), zoom: 15, duration: 2000 });
                 $('#villagename').html(ccdata[i][0]);
                 $('#villagetime').html(ccdata[i][3]);
-                $('#villagecontent').html(ccdata[i][4] + ccdata[min_index][5]);
+                $('#villagecontent').html(ccdata[i][4] + ccdata[i][5]);
                 $("#staticBackdropLabel").html(ccdata[i][0] + "(" + ccdata[i][3] + ")");
                 $("#launch").click();
                 break;
