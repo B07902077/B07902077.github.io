@@ -43,9 +43,6 @@
 }
 
 #DataSearch {
-	position: fixed;
-	top: 1vh;
-	right: 1vw;
 	width: 18vw;
 	height: 6vh;
 	font-size: 2.5vh;
@@ -53,9 +50,6 @@
 }
 
 #DataSearchClear {
-	position: fixed;
-	top: 1vh;
-	right: 1vw;
 	width: 15vw;
 	height: 6vh;
 	font-size: 2.5vh;
