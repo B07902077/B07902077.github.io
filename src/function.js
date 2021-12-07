@@ -126,7 +126,7 @@ for (i = 0; i < ccdata.length; i++) {
                     element: container,
                     autoPan: true,
                     autoPanAnimation: {
-                        duration: 250
+                        duration: 10
                     },
                     offset: [10, -20]
                 }));
