@@ -213,6 +213,7 @@ function clearSearch() {
         check.push(1);
     }
     checkArray = check;
+    $("#DataSearch").val("");
     showVal($("#exslider").val());
 }
 
