@@ -126,7 +126,7 @@ for (i = 0; i < ccdata.length; i++) {
                     element: container,
                     autoPan: true,
                     autoPanAnimation: {
-                        duration: 10
+                        duration: 250
                     },
                     offset: [10, -20]
                 }));
@@ -164,7 +164,7 @@ $("#exampleDataList").change(function () {
             alert("搜查不到結果");
         else {
             if (ccdata[i][0] == $("#exampleDataList").val()) {
-                map.getView().animate({ center: ol.proj.fromLonLat([parseFloat(ccdata[i][2]), parseFloat(ccdata[i][1])]), zoom: 15, duration: 2000 });
+                map.getView().animate({ center: ol.proj.fromLonLat([parseFloat(ccdata[i][2]), parseFloat(ccdata[i][1])]), zoom: 10, duration: 2000 });
                 $('#villagename').html(ccdata[i][0]);
                 $('#villagetime').html(ccdata[i][3]);
                 $('#villagecontent').html(ccdata[i][4] + ":" +  ccdata[i][5]);
