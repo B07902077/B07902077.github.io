@@ -190,7 +190,7 @@ $("#exampleDataList").change(function () {
     }
 });
 
-console.log("test search");
+console.log("test search1");
 $("#DataSearch").change(function () {
     let searchAge = $("#exslider").val();
     let searchWord = $("#DataSearch").val();
