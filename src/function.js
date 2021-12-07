@@ -15,13 +15,16 @@ function readTextFile(file) {
 readTextFile("src/reclamation.txt")
 var data = readget.split('\n');
 var cdata = [];
+var allOne = [];
 for (i = 0; i < data.length; i++) {
     c = data[i].split(',');
     // console.log(c);
     var len = c[0].length + c[1].length + c[2].length + c[3].length;
     var get = [c[0], parseFloat(c[1]), parseFloat(c[2]), parseInt(c[3]), c[4], c[5]];
-    console.log(get);
     cdata.push(get)
+    allOne.push(1);
+    console.log(cdata);
+    console.log(allOne);
 }
 var markbox = [];
 function getdp(p1, p2) {
@@ -43,6 +46,7 @@ for (i = 0; i < cdata.length; i++) {
     ccdata.push(cdata[choose]);
 }
 console.log(ccdata);
+/*
 var timedata = [];
 var basicmin = 1600;
 for (i = 0; i < cdata.length; i++) {
@@ -57,7 +61,8 @@ for (i = 0; i < cdata.length; i++) {
     basicmin = basic;
     timedata.push(cdata[choose]);
 }
-function showVal(newVal, type) {
+*/
+function showVal(newVal, type, array) {
     //var tf=document.getElementById("myCheck").checked;
     if (type == 0) {
         if (document.getElementById("flexCheckDefault").checked) {
@@ -166,7 +171,7 @@ $("#exampleDataList").change(function () {
             alert("搜查不到結果");
         else {
             if (ccdata[i][0] == $("#exampleDataList").val()) {
-                map.getView().animate({ center: ol.proj.fromLonLat([parseFloat(ccdata[i][2]), parseFloat(ccdata[i][1])]), zoom: 13, duration: 2000 });
+                map.getView().animate({ center: ol.proj.fromLonLat([parseFloat(ccdata[i][2]), parseFloat(ccdata[i][1])]), zoom: 14, duration: 2000 });
                 $('#villagename').html(ccdata[i][0]);
                 $('#villagetime').html(ccdata[i][3]);
                 $('#villagecontent').html(ccdata[i][4] + ":" + ccdata[i][5]);
@@ -177,6 +182,25 @@ $("#exampleDataList").change(function () {
         }
     }
 });
+
+$("#DataSearch").change(function () {
+    for (i = 0; i < ccdata.length + 1; i++) {
+        if (i == ccdata.length && $("#DataSearch").val() != "")
+            alert("搜查不到結果");
+        else {
+            if (ccdata[i][0] == $("#DataSearch").val()) {
+                map.getView().animate({ center: ol.proj.fromLonLat([parseFloat(ccdata[i][2]), parseFloat(ccdata[i][1])]), zoom: 14, duration: 2000 });
+                $('#villagename').html(ccdata[i][0]);
+                $('#villagetime').html(ccdata[i][3]);
+                $('#villagecontent').html(ccdata[i][4] + ":" + ccdata[i][5]);
+                $("#staticBackdropLabel").html(ccdata[i][0] + "(" + ccdata[i][3] + ")");
+                $("#launch").click();
+                break;
+            }
+        }
+    }
+});
+
 function dragElement(elmnt) {
     var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
     if (document.getElementById("valBox")) {
