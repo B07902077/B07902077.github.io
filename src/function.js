@@ -70,7 +70,7 @@ function showVal(newVal, array) {
     if (array.length == 0) checkArray = allOne;
     else {
         checkArray = array;
-        console.log(checkArray);
+        console.log('checkArray: ', checkArray);
     }
     // console.log(checkArray);
 
@@ -192,6 +192,7 @@ $("#exampleDataList").change(function () {
     }
 });
 
+/*
 $("#DataSearch").change(function () {
     let searchWord = $("#exslider").val();
     let check = [];
@@ -201,7 +202,7 @@ $("#DataSearch").change(function () {
     }
     showVal(searchWord, check);
 });
-
+*/
 
 function dragElement(elmnt) {
     var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
