@@ -57,32 +57,34 @@ for (i = 0; i < cdata.length; i++) {
     basicmin = basic;
     timedata.push(cdata[choose]);
 }
-function showVal(newVal) {
+function showVal(newVal, type) {
     //var tf=document.getElementById("myCheck").checked;
-    if (document.getElementById("flexCheckDefault").checked) {
-        var com = parseInt(newVal) + parseInt($("#inputyear").val());
-        document.getElementById("valBox").innerHTML = "建立時間：" + newVal + "~" + com;
-        for (i = 0; i < markbox.length; i++) {
-            if ((markbox[i].year > com || markbox[i].year < newVal) && markbox[i].shown == 1)
-                markbox[i].delete();
-            if (markbox[i].year >= newVal && markbox[i].year <= com && markbox[i].shown == 0)
-                markbox[i].create();
-        }
-    } else {
-        document.getElementById("valBox").innerHTML = "時間：至" + newVal;
-        for (i = 0; i < markbox.length; i++) {
-            if (markbox[i].year > newVal && markbox[i].shown == 1)
-                markbox[i].delete();
-            if (markbox[i].year <= newVal && markbox[i].shown == 0)
-                markbox[i].create();
+    if (type == 0) {
+        if (document.getElementById("flexCheckDefault").checked) {
+            var com = parseInt(newVal) + parseInt($("#inputyear").val());
+            document.getElementById("valBox").innerHTML = "建立時間：" + newVal + "~" + com;
+            for (i = 0; i < markbox.length; i++) {
+                if ((markbox[i].year > com || markbox[i].year < newVal) && markbox[i].shown == 1)
+                    markbox[i].delete();
+                if (markbox[i].year >= newVal && markbox[i].year <= com && markbox[i].shown == 0)
+                    markbox[i].create();
+            }
+        } else {
+            document.getElementById("valBox").innerHTML = "時間：至" + newVal;
+            for (i = 0; i < markbox.length; i++) {
+                if (markbox[i].year > newVal && markbox[i].shown == 1)
+                    markbox[i].delete();
+                if (markbox[i].year <= newVal && markbox[i].shown == 0)
+                    markbox[i].create();
+            }
         }
     }
 }
 $('#flexCheckDefault').change(function () {
-    showVal($("#exslider").val())
+    showVal($("#exslider").val(), 0)
 });
 $("#inputyear").on('input', function () {
-    showVal($("#exslider").val())
+    showVal($("#exslider").val(), 0)
 });
 $("#launch").hide()
 var ken = '<datalist id="datalistOptions">';
@@ -167,7 +169,7 @@ $("#exampleDataList").change(function () {
                 map.getView().animate({ center: ol.proj.fromLonLat([parseFloat(ccdata[i][2]), parseFloat(ccdata[i][1])]), zoom: 13, duration: 2000 });
                 $('#villagename').html(ccdata[i][0]);
                 $('#villagetime').html(ccdata[i][3]);
-                $('#villagecontent').html(ccdata[i][4] + ":" +  ccdata[i][5]);
+                $('#villagecontent').html(ccdata[i][4] + ":" + ccdata[i][5]);
                 $("#staticBackdropLabel").html(ccdata[i][0] + "(" + ccdata[i][3] + ")");
                 $("#launch").click();
                 break;
