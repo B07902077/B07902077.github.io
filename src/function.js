@@ -16,17 +16,17 @@ readTextFile("src/reclamation.txt")
 var data = readget.split('\n');
 console.log('data: ', data);
 var cdata = [];
-var allOne = [];
+var checkArray = [];
 for (i = 0; i < data.length; i++) {
     c = data[i].split(',');
     // console.log(c);
     var len = c[0].length + c[1].length + c[2].length + c[3].length;
     var get = [c[0], parseFloat(c[1]), parseFloat(c[2]), parseInt(c[3]), c[4], c[5]];
     cdata.push(get)
-    allOne.push(1);
+    checkArray.push(1);
 }
 console.log('cdata: ', cdata);
-console.log('allOne: ', allOne);
+console.log('checkArray: ', checkArray);
 
 var markbox = [];
 function getdp(p1, p2) {
@@ -64,41 +64,39 @@ for (i = 0; i < cdata.length; i++) {
     timedata.push(cdata[choose]);
 }
 */
-function showVal(newVal, array) {
+function showVal(newVal) {
     //var tf=document.getElementById("myCheck").checked;
-    let checkArray;
-    if (array.length == 0) checkArray = allOne;
-    else {
-        checkArray = array;
-        console.log('checkArray: ', checkArray);
-    }
     // console.log(checkArray);
 
     if (document.getElementById("flexCheckDefault").checked) {
         var com = parseInt(newVal) + parseInt($("#inputyear").val());
         document.getElementById("valBox").innerHTML = "建立時間：" + newVal + "~" + com;
         for (i = 0; i < markbox.length; i++) {
-            if ((markbox[i].year > com || markbox[i].year < newVal) && markbox[i].shown == 1 || checkArray[i] == 0)
+            if ((markbox[i].year > com || markbox[i].year < newVal) && markbox[i].shown == 1)
                 markbox[i].delete();
-            if (markbox[i].year >= newVal && markbox[i].year <= com && markbox[i].shown == 0 && checkArray[i] == 1)
+            else if (checkArray[i] == 0 && markbox[i].shown == 1)
+                markbox[i].delete();
+            else if (markbox[i].year >= newVal && markbox[i].year <= com && checkArray[i] == 1 && markbox[i].shown == 0)
                 markbox[i].create();
         }
     } else {
         document.getElementById("valBox").innerHTML = "時間：至" + newVal;
         for (i = 0; i < markbox.length; i++) {
-            if (markbox[i].year > newVal && markbox[i].shown == 1 || checkArray[i] == 0)
+            if (markbox[i].year > newVal && markbox[i].shown == 1)
                 markbox[i].delete();
-            if (markbox[i].year <= newVal && markbox[i].shown == 0 && checkArray[i] == 1)
+            else if (checkArray[i] == 0 && markbox[i].shown == 1)
+                markbox[i].delete();
+            else if (markbox[i].year <= newVal && checkArray[i] == 1 && markbox[i].shown == 0)
                 markbox[i].create();
         }
     }
 
 }
 $('#flexCheckDefault').change(function () {
-    showVal($("#exslider").val(), [])
+    showVal($("#exslider").val())
 });
 $("#inputyear").on('input', function () {
-    showVal($("#exslider").val(), [])
+    showVal($("#exslider").val())
 });
 $("#launch").hide()
 var ken = '<datalist id="datalistOptions">';
@@ -204,7 +202,10 @@ $("#DataSearch").change(function () {
         if (ccdata[i][4].includes(searchWord)) check.push(1);
         else check.push(0);
     }
-    showVal(searchAge, check);
+    checkArray = check;
+    console.log('check: ', check);
+    console.log('checkArray: ', checkArray);
+    showVal(searchAge);
 });
 
 
