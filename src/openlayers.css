@@ -41,3 +41,13 @@
 	font-size: 2.5vh;
 	background-color: transparent;
 }
+
+#exampleDataList2 {
+	position: fixed;
+	top: 1vh;
+	right: 1vw;
+	width: 18vw;
+	height: 6vh;
+	font-size: 2.5vh;
+	background-color: transparent;
+}
