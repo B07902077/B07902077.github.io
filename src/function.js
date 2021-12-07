@@ -192,19 +192,18 @@ $("#exampleDataList").change(function () {
     }
 });
 
-
+console.log("test search");
 $("#DataSearch").change(function () {
     let searchAge = $("#exslider").val();
     let searchWord = $("#DataSearch").val();
     let check = [];
     console.log('searchWord: ', searchWord);
-    /*
+    
     for (i = 0; i < data.length; i++) {
         if (data[i].includes(searchWord)) check.push(1);
         else check.push(0);
     }
     showVal(searchAge, check);
-    */
 });
 
 
