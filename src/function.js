@@ -17,7 +17,7 @@ var data = readget.split('\n');
 var cdata = [];
 for (i = 0; i < data.length; i++) {
     c = data[i].split(',');
-    // console.log(c);
+    console.log(c);
     var len = c[0].length + c[1].length + c[2].length + c[3].length;
     var get = [c[0], parseFloat(c[1]), parseFloat(c[2]), parseInt(c[3]), data[i].substr(len + 4)];
     cdata.push(get)
