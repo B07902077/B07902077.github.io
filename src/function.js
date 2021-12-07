@@ -192,17 +192,20 @@ $("#exampleDataList").change(function () {
     }
 });
 
-/*
+
 $("#DataSearch").change(function () {
     let searchWord = $("#exslider").val();
     let check = [];
+    console.log('searchWord: ', searchWord);
+    /*
     for (i = 0; i < data.length; i++) {
         if (data[i].includes(searchWord)) check.push(1);
         else check.push(0);
     }
     showVal(searchWord, check);
+    */
 });
-*/
+
 
 function dragElement(elmnt) {
     var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
