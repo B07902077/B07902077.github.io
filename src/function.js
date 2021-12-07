@@ -67,7 +67,7 @@ for (i = 0; i < cdata.length; i++) {
 function showVal(newVal, array) {
     //var tf=document.getElementById("myCheck").checked;
     let checkArray;
-    if (array == []) checkArray = allOne;
+    if (array.length == 0) checkArray = allOne;
     else {
         checkArray = array;
         console.log(checkArray);
