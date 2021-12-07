@@ -192,7 +192,6 @@ $("#exampleDataList").change(function () {
 
 console.log("test search");
 $("#DataSearch").change(function () {
-    let searchAge = $("#exslider").val();
     let searchWord = $("#DataSearch").val();
     let check = [];
     console.log('searchWord: ', searchWord);
@@ -205,9 +204,17 @@ $("#DataSearch").change(function () {
     checkArray = check;
     console.log('check: ', check);
     console.log('checkArray: ', checkArray);
-    showVal(searchAge);
+    showVal($("#exslider").val());
 });
 
+function clearSearch() {
+    let check = [];
+    for (i = 0; i < ccdata.length; i++) {
+        check.push(1);
+    }
+    checkArray = check;
+    showVal($("#exslider").val());
+}
 
 function dragElement(elmnt) {
     var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
