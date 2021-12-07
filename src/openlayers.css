@@ -53,5 +53,11 @@
 	width: 6vw;
 	height: 4vh;
 	font-size: 2vh;
-	background-color: white;
+	background-color: transparent;
+}
+#DataSearchClear:hover {
+	width: 6vw;
+	height: 4vh;
+	font-size: 2vh;
+	background-color: gray;
 }
