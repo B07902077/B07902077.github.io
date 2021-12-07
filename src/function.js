@@ -78,7 +78,7 @@ function showVal(newVal, array) {
         var com = parseInt(newVal) + parseInt($("#inputyear").val());
         document.getElementById("valBox").innerHTML = "建立時間：" + newVal + "~" + com;
         for (i = 0; i < markbox.length; i++) {
-            if ((markbox[i].year > com || markbox[i].year < newVal) && markbox[i].shown == 1 && checkArray[i] == 1)
+            if ((markbox[i].year > com || markbox[i].year < newVal) && markbox[i].shown == 1 || checkArray[i] == 0)
                 markbox[i].delete();
             if (markbox[i].year >= newVal && markbox[i].year <= com && markbox[i].shown == 0 && checkArray[i] == 1)
                 markbox[i].create();
@@ -86,7 +86,7 @@ function showVal(newVal, array) {
     } else {
         document.getElementById("valBox").innerHTML = "時間：至" + newVal;
         for (i = 0; i < markbox.length; i++) {
-            if (markbox[i].year > newVal && markbox[i].shown == 1 && checkArray[i] == 1)
+            if (markbox[i].year > newVal && markbox[i].shown == 1 || checkArray[i] == 0)
                 markbox[i].delete();
             if (markbox[i].year <= newVal && markbox[i].shown == 0 && checkArray[i] == 1)
                 markbox[i].create();
@@ -192,7 +192,7 @@ $("#exampleDataList").change(function () {
     }
 });
 
-console.log("test search1");
+console.log("test search");
 $("#DataSearch").change(function () {
     let searchAge = $("#exslider").val();
     let searchWord = $("#DataSearch").val();
