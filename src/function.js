@@ -20,6 +20,7 @@ for (i = 0; i < data.length; i++) {
     console.log(c);
     var len = c[0].length + c[1].length + c[2].length + c[3].length;
     var get = [c[0], parseFloat(c[1]), parseFloat(c[2]), parseInt(c[3]), data[i].substr(len + 4)];
+    console.log(get);
     cdata.push(get)
 }
 var markbox = [];
@@ -38,6 +39,7 @@ for (i = 0; i < cdata.length; i++) {
         }
     }
     basicmax = basic;
+    // console.log(cdata[choose]);
     ccdata.push(cdata[choose]);
 }
 console.log(ccdata);
