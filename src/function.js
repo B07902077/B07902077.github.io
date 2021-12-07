@@ -64,11 +64,11 @@ for (i = 0; i < cdata.length; i++) {
     timedata.push(cdata[choose]);
 }
 */
-function showVal(newVal, type, array) {
+function showVal(newVal, array) {
     //var tf=document.getElementById("myCheck").checked;
     let checkArray;
-    if (type == 1) checkArray = array;
-    else checkArray = allOne;
+    if (array == []) checkArray = allOne;
+    else checkArray = array;
     // console.log(checkArray);
 
     if (document.getElementById("flexCheckDefault").checked) {
@@ -92,10 +92,10 @@ function showVal(newVal, type, array) {
 
 }
 $('#flexCheckDefault').change(function () {
-    showVal($("#exslider").val(), 0, [])
+    showVal($("#exslider").val(), [])
 });
 $("#inputyear").on('input', function () {
-    showVal($("#exslider").val(), 0, [])
+    showVal($("#exslider").val(), [])
 });
 $("#launch").hide()
 var ken = '<datalist id="datalistOptions">';
@@ -189,6 +189,7 @@ $("#exampleDataList").change(function () {
     }
 });
 
+/*
 $("#DataSearch").change(function () {
     showVal($("#exslider").val(), 0)
     for (i = 0; i < ccdata.length + 1; i++) {
@@ -207,6 +208,7 @@ $("#DataSearch").change(function () {
         }
     }
 });
+*/
 
 function dragElement(elmnt) {
     var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
