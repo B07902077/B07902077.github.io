@@ -194,7 +194,8 @@ $("#exampleDataList").change(function () {
 
 
 $("#DataSearch").change(function () {
-    let searchWord = $("#exslider").val();
+    let searchAge = $("#exslider").val();
+    let searchWord = $("#DataSearch").val();
     let check = [];
     console.log('searchWord: ', searchWord);
     /*
@@ -202,7 +203,7 @@ $("#DataSearch").change(function () {
         if (data[i].includes(searchWord)) check.push(1);
         else check.push(0);
     }
-    showVal(searchWord, check);
+    showVal(searchAge, check);
     */
 });
 
