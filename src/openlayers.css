@@ -61,8 +61,10 @@
 
 #mainTitle {
 	font-size: 3vw;
+	background: transparent;
 }
 
 #secondTitle {
 	font-size: 1.5vw;
+	background: transparent;
 }
