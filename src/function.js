@@ -14,7 +14,7 @@ function readTextFile(file) {
 }
 readTextFile("src/reclamation.txt")
 var data = readget.split('\n');
-console.log('data = ', data);
+console.log('data: ', data);
 var cdata = [];
 var allOne = [];
 for (i = 0; i < data.length; i++) {
@@ -25,8 +25,8 @@ for (i = 0; i < data.length; i++) {
     cdata.push(get)
     allOne.push(1);
 }
-console.log(cdata);
-console.log(allOne);
+console.log('cdata: ', cdata);
+console.log('allOne: ', allOne);
 
 var markbox = [];
 function getdp(p1, p2) {
@@ -68,7 +68,10 @@ function showVal(newVal, array) {
     //var tf=document.getElementById("myCheck").checked;
     let checkArray;
     if (array == []) checkArray = allOne;
-    else checkArray = array;
+    else {
+        checkArray = array;
+        console.log(checkArray);
+    }
     // console.log(checkArray);
 
     if (document.getElementById("flexCheckDefault").checked) {
@@ -189,26 +192,16 @@ $("#exampleDataList").change(function () {
     }
 });
 
-/*
 $("#DataSearch").change(function () {
-    showVal($("#exslider").val(), 0)
-    for (i = 0; i < ccdata.length + 1; i++) {
-        if (i == ccdata.length && $("#DataSearch").val() != "")
-            alert("搜查不到結果");
-        else {
-            if (ccdata[i][0] == $("#DataSearch").val()) {
-                map.getView().animate({ center: ol.proj.fromLonLat([parseFloat(ccdata[i][2]), parseFloat(ccdata[i][1])]), zoom: 14, duration: 2000 });
-                $('#villagename').html(ccdata[i][0]);
-                $('#villagetime').html(ccdata[i][3]);
-                $('#villagecontent').html(ccdata[i][4] + ":" + ccdata[i][5]);
-                $("#staticBackdropLabel").html(ccdata[i][0] + "(" + ccdata[i][3] + ")");
-                $("#launch").click();
-                break;
-            }
-        }
+    let searchWord = $("#exslider").val();
+    let check = [];
+    for (i = 0; i < data.length; i++) {
+        if (data[i].includes(searchWord)) check.push(1);
+        else check.push(0);
     }
+    showVal(searchWord, check);
 });
-*/
+
 
 function dragElement(elmnt) {
     var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
