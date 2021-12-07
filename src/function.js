@@ -23,9 +23,10 @@ for (i = 0; i < data.length; i++) {
     var get = [c[0], parseFloat(c[1]), parseFloat(c[2]), parseInt(c[3]), c[4], c[5]];
     cdata.push(get)
     allOne.push(1);
-    console.log(cdata);
-    console.log(allOne);
 }
+console.log(cdata);
+console.log(allOne);
+
 var markbox = [];
 function getdp(p1, p2) {
     return Math.pow(Math.pow(p1[0] - p2[0], 2) + Math.pow(p1[1] - p2[1], 2), 1 / 2)
@@ -64,32 +65,36 @@ for (i = 0; i < cdata.length; i++) {
 */
 function showVal(newVal, type, array) {
     //var tf=document.getElementById("myCheck").checked;
-    if (type == 0) {
-        if (document.getElementById("flexCheckDefault").checked) {
-            var com = parseInt(newVal) + parseInt($("#inputyear").val());
-            document.getElementById("valBox").innerHTML = "建立時間：" + newVal + "~" + com;
-            for (i = 0; i < markbox.length; i++) {
-                if ((markbox[i].year > com || markbox[i].year < newVal) && markbox[i].shown == 1)
-                    markbox[i].delete();
-                if (markbox[i].year >= newVal && markbox[i].year <= com && markbox[i].shown == 0)
-                    markbox[i].create();
-            }
-        } else {
-            document.getElementById("valBox").innerHTML = "時間：至" + newVal;
-            for (i = 0; i < markbox.length; i++) {
-                if (markbox[i].year > newVal && markbox[i].shown == 1)
-                    markbox[i].delete();
-                if (markbox[i].year <= newVal && markbox[i].shown == 0)
-                    markbox[i].create();
-            }
+    let checkArray;
+    if (type == 1) checkArray = array;
+    else checkArray = allOne;
+    console.log(checkArray);
+
+    if (document.getElementById("flexCheckDefault").checked) {
+        var com = parseInt(newVal) + parseInt($("#inputyear").val());
+        document.getElementById("valBox").innerHTML = "建立時間：" + newVal + "~" + com;
+        for (i = 0; i < markbox.length; i++) {
+            if ((markbox[i].year > com || markbox[i].year < newVal) && markbox[i].shown == 1 && checkArray[i] == 1)
+                markbox[i].delete();
+            if (markbox[i].year >= newVal && markbox[i].year <= com && markbox[i].shown == 0 && checkArray[i] == 1)
+                markbox[i].create();
+        }
+    } else {
+        document.getElementById("valBox").innerHTML = "時間：至" + newVal;
+        for (i = 0; i < markbox.length; i++) {
+            if (markbox[i].year > newVal && markbox[i].shown == 1 && checkArray[i] == 1)
+                markbox[i].delete();
+            if (markbox[i].year <= newVal && markbox[i].shown == 0 && checkArray[i] == 1)
+                markbox[i].create();
         }
     }
+
 }
 $('#flexCheckDefault').change(function () {
-    showVal($("#exslider").val(), 0)
+    showVal($("#exslider").val(), 0, [])
 });
 $("#inputyear").on('input', function () {
-    showVal($("#exslider").val(), 0)
+    showVal($("#exslider").val(), 0, [])
 });
 $("#launch").hide()
 var ken = '<datalist id="datalistOptions">';
@@ -184,6 +189,7 @@ $("#exampleDataList").change(function () {
 });
 
 $("#DataSearch").change(function () {
+    showVal($("#exslider").val(), 0)
     for (i = 0; i < ccdata.length + 1; i++) {
         if (i == ccdata.length && $("#DataSearch").val() != "")
             alert("搜查不到結果");
