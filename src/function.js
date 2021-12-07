@@ -199,9 +199,9 @@ $("#DataSearch").change(function () {
     let check = [];
     console.log('searchWord: ', searchWord);
     
-    for (i = 0; i < data.length; i++) {
-        console.log(data[i]);
-        if (data[i].includes(searchWord)) check.push(1);
+    for (i = 0; i < ccdata.length; i++) {
+        console.log(ccdata[i][4]);
+        if (ccdata[i][4].includes(searchWord)) check.push(1);
         else check.push(0);
     }
     showVal(searchAge, check);
