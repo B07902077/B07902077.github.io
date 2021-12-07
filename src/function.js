@@ -167,7 +167,7 @@ $("#exampleDataList").change(function () {
                 map.getView().animate({ center: ol.proj.fromLonLat([parseFloat(ccdata[i][2]), parseFloat(ccdata[i][1])]), zoom: 15, duration: 2000 });
                 $('#villagename').html(ccdata[i][0]);
                 $('#villagetime').html(ccdata[i][3]);
-                $('#villagecontent').html(ccdata[i][4] + ccdata[i][5]);
+                $('#villagecontent').html(ccdata[i][4] + ":" +  ccdata[i][5]);
                 $("#staticBackdropLabel").html(ccdata[i][0] + "(" + ccdata[i][3] + ")");
                 $("#launch").click();
                 break;
