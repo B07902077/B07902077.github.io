@@ -8,7 +8,7 @@ var classGotoMap = function (mapOptions) {
         mapTarget: 'map',
         mapSouce: new ol.source.OSM(),
         mapCenter: [0, 0],
-        mapZoom: 2
+        mapZoom: 1
     }, mapOptions);
 
     var accessibleSource = mapSettiings.mapSouce;
