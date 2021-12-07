@@ -14,6 +14,7 @@ function readTextFile(file) {
 }
 readTextFile("src/reclamation.txt")
 var data = readget.split('\n');
+console.log('data = ', data);
 var cdata = [];
 var allOne = [];
 for (i = 0; i < data.length; i++) {
@@ -68,7 +69,7 @@ function showVal(newVal, type, array) {
     let checkArray;
     if (type == 1) checkArray = array;
     else checkArray = allOne;
-    console.log(checkArray);
+    // console.log(checkArray);
 
     if (document.getElementById("flexCheckDefault").checked) {
         var com = parseInt(newVal) + parseInt($("#inputyear").val());
