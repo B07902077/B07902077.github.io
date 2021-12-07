@@ -58,3 +58,11 @@
 #DataSearchClear:hover {
 	background-color: #AED6F1;
 }
+
+#mainTitle {
+	font-size: 3vw;
+}
+
+#secondTitle {
+	font-size: 2vw;
+}
