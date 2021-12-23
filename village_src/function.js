@@ -20,8 +20,8 @@ var checkArray = [];
 for (i = 0; i < data.length; i++) {
     c = data[i].split(',');
     // console.log(c);
-    urlname = data[i][11].split(' ');
-    urls = data[i][12].split(' ');
+    urlname = data[i][11].split('、');
+    urls = data[i][12].split('、');
     console.log(urlname, urls);
 
     var get = [parseInt(c[0]), c[1], c[2], parseInt(c[3]), c[4], parseInt(c[5]), parseFloat(c[6]), parseFloat(c[7]), c[8], c[9], c[10], urlname, urls];
