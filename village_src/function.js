@@ -181,7 +181,7 @@ $("#exampleDataList").change(function () {
         if (i == cdata.length && $("#exampleDataList").val() != "")
             alert("搜查不到結果");
         else {
-            if (cdata[i][0] == $("#exampleDataList").val()) {
+            if (cdata[i][1] == $("#exampleDataList").val()) {
                 map.getView().animate({ center: ol.proj.fromLonLat([parseFloat(cdata[i][6]), parseFloat(cdata[i][7])]), zoom: 14, duration: 2000 });
                 $('#villagename').html(cdata[i][1]);
                 $('#villagetime').html(cdata[i][3]);
