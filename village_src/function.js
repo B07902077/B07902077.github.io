@@ -20,7 +20,11 @@ var checkArray = [];
 for (i = 0; i < data.length; i++) {
     c = data[i].split(',');
     // console.log(c);
-    var get = [parseInt(c[0]), c[1], c[2], parseInt(c[3]), c[4], parseInt(c[5]), parseFloat(c[6]), parseFloat(c[7]), c[8], c[9], c[10], c[11]];
+    urlname = data[i][11].split(' ');
+    urls = data[i][12].split(' ');
+    console.log(urlname, urls);
+
+    var get = [parseInt(c[0]), c[1], c[2], parseInt(c[3]), c[4], parseInt(c[5]), parseFloat(c[6]), parseFloat(c[7]), c[8], c[9], c[10], urlname, urls];
     cdata.push(get)
     checkArray.push(1);
 }
@@ -135,10 +139,8 @@ for (i = 0; i < cdata.length; i++) {
         $('#villageHistory').html("沿革：" + cdata[min_index][9]);
         $('#villageSpecial').html("地方特色：" + cdata[min_index][10]);
         $('#villageRefernce').html("資料來源：");
-        urlname = cdata[min_index][11].split(' ');
-        urls = cdata[min_index][12].split(' ');
-        for (j = 0; j < urls.length; j++) {
-            content = "<a href=\"" + urls[j] + "\">" + urlname[j] + "</a>";
+        for (j = 0; j < cdata[min_index][12].length; j++) {
+            content = "<a href=\"" + cdata[min_index][12][j] + "\">" + cdata[min_index][11][j] + "</a>";
             $('#villageRefernce').append(content);
         }
         $("#staticBackdropLabel").html(cdata[min_index][1] + "（" + cdata[min_index][3] + "）");
@@ -189,7 +191,6 @@ for (i = 0; i < cdata.length; i++) {
         }
     });
 }
-console.log(markbox);
 
 dragElement(document.getElementById("operation"));
 $("#exampleDataList").html(ken + '\n</datalist>')
@@ -209,10 +210,8 @@ $("#exampleDataList").change(function () {
                 $('#villageHistory').html("沿革：" + cdata[i][9]);
                 $('#villageSpecial').html("地方特色：" + cdata[i][10]);
                 $('#villageRefernce').html("資料來源：");
-                urlname = cdata[i][11].split(' ');
-                urls = cdata[i][12].split(' ');
-                for (j = 0; j < urls.length; j++) {
-                    content = "<a href=\"" + urls[j] + "\">" + urlname[j] + "</a>";
+                for (j = 0; j < cdata[i][12].length; j++) {
+                    content = "<a href=\"" + cdata[i][12][j] + "\">" + cdata[i][11][j] + "</a>";
                     $('#villageRefernce').append(content);
                 }
                 $("#staticBackdropLabel").html(cdata[i][1] + "（" + cdata[i][3] + "）");
