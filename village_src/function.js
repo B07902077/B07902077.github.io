@@ -20,10 +20,6 @@ var checkArray = [];
 for (i = 0; i < data.length; i++) {
     c = data[i].split(',');
     // console.log(c);
-    let len = 0;
-    for(j = 0; j <= 11; j++){
-        len = len + c[j].length;
-    }
     var get = [parseInt(c[0]), c[1], c[2], parseInt(c[3]), c[4], parseInt(c[5]), parseFloat(c[6]), parseFloat(c[7]), c[8], c[9], c[10], c[11]];
     cdata.push(get)
     checkArray.push(1);
@@ -88,15 +84,15 @@ function showVal(newVal) {
             console.log(markbox[i]);
             console.log(markbox[i].year);
             console.log(markbox[i].shown);
-            if (markbox[i].year > newVal && markbox[i].shown == 1){
+            if (markbox[i].year > newVal && markbox[i].shown == 1) {
                 markbox[i].delete();
                 console.log("delete-1");
             }
-            else if (checkArray[i] == 0 && markbox[i].shown == 1){
+            else if (checkArray[i] == 0 && markbox[i].shown == 1) {
                 markbox[i].delete();
                 console.log("delete-2");
             }
-            else if (markbox[i].year <= newVal && checkArray[i] == 1 && markbox[i].shown == 0){
+            else if (markbox[i].year <= newVal && checkArray[i] == 1 && markbox[i].shown == 0) {
                 markbox[i].create();
                 console.log("create");
             }
@@ -130,11 +126,22 @@ for (i = 0; i < cdata.length; i++) {
                 min_index = j;
             }
         }
-        $('#villagename').html(cdata[min_index][1]);
-        $('#villagetime').html(cdata[min_index][3]);
-        $('#villagecontent').html(cdata[min_index][4] + ":" + cdata[min_index][5]);
-        $("#staticBackdropLabel").html(cdata[min_index][1] + "(" + cdata[min_index][3] + ")");
-
+        $('#villageName').html("名稱：" + cdata[min_index][1]);
+        $('#villageTime').html("興建年份：" + cdata[min_index][3]);
+        $('#villageAddress').html("村址：" + cdata[min_index][2]);
+        $('#villageType').html("興建單位：" + cdata[min_index][4]);
+        $('#villageScale').html("興建戶數：" + cdata[min_index][5]);
+        $('#villageContent').html("簡介：" + cdata[min_index][8]);
+        $('#villageHistory').html("沿革：" + cdata[min_index][9]);
+        $('#villageSpecial').html("地方特色：" + cdata[min_index][10]);
+        $('#villageRefernce').html("資料來源：");
+        urlname = cdata[min_index][11].split(' ');
+        urls = cdata[min_index][12].split(' ');
+        for (j = 0; j < urls.length; j++) {
+            content = "<a href=\"" + urls[j] + "\">" + urlname[j] + "</a>";
+            $('#villageRefernce').append(content);
+        }
+        $("#staticBackdropLabel").html(cdata[min_index][1] + "（" + cdata[min_index][3] + "）");
         $("#launch").click();
     });
     mark.create();
@@ -201,8 +208,13 @@ $("#exampleDataList").change(function () {
                 $('#villageContent').html("簡介：" + cdata[i][8]);
                 $('#villageHistory').html("沿革：" + cdata[i][9]);
                 $('#villageSpecial').html("地方特色：" + cdata[i][10]);
-                $('#villageRefernce').html("資料來源：" + cdata[i][11]);
-                $('#villageURL').html("外部連結：" + cdata[i][12]);
+                $('#villageRefernce').html("資料來源：");
+                urlname = cdata[i][11].split(' ');
+                urls = cdata[i][12].split(' ');
+                for (j = 0; j < urls.length; j++) {
+                    content = "<a href=\"" + urls[j] + "\">" + urlname[j] + "</a>";
+                    $('#villageRefernce').append(content);
+                }
                 $("#staticBackdropLabel").html(cdata[i][1] + "（" + cdata[i][3] + "）");
                 $("#launch").click();
                 break;
@@ -220,8 +232,8 @@ $("#DataSearch").change(function () {
     for (i = 0; i < cdata.length; i++) {
         // console.log(cdata[i][4]);
         // 目前只搜尋 cdata[i][4]]、cdata[i][5]，應再新增其他欄位的搜尋。
-        if (cdata[i][1].includes(searchWord) || cdata[i][2].includes(searchWord) || cdata[i][4].includes(searchWord) || 
-            cdata[i][8].includes(searchWord) || cdata[i][9].includes(searchWord) || cdata[i][10].includes(searchWord) || cdata[i][11].includes(searchWord)){
+        if (cdata[i][1].includes(searchWord) || cdata[i][2].includes(searchWord) || cdata[i][4].includes(searchWord) ||
+            cdata[i][8].includes(searchWord) || cdata[i][9].includes(searchWord) || cdata[i][10].includes(searchWord) || cdata[i][11].includes(searchWord)) {
             check.push(1);
         }
         else check.push(0);
