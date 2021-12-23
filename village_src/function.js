@@ -130,15 +130,15 @@ for (i = 0; i < cdata.length; i++) {
                 min_index = j;
             }
         }
-        $('#villageName').html("名稱：" + cdata[min_index][1]);
-        $('#villageTime').html("興建年份：" + cdata[min_index][3]);
-        $('#villageAddress').html("村址：" + cdata[min_index][2]);
-        $('#villageType').html("興建單位：" + cdata[min_index][4]);
-        $('#villageScale').html("興建戶數：" + cdata[min_index][5]);
-        $('#villageContent').html("簡介：" + cdata[min_index][8]);
-        $('#villageHistory').html("沿革：" + cdata[min_index][9]);
-        $('#villageSpecial').html("地方特色：" + cdata[min_index][10]);
-        $('#villageRefernce').html("資料來源：");
+        $('#villageName').html("【名稱】" + cdata[min_index][1]);
+        $('#villageTime').html("【興建年份】" + cdata[min_index][3]);
+        $('#villageAddress').html("【村址】" + cdata[min_index][2]);
+        $('#villageType').html("【興建單位】" + cdata[min_index][4]);
+        $('#villageScale').html("【興建戶數】" + cdata[min_index][5]);
+        $('#villageContent').html("【簡介】" + cdata[min_index][8]);
+        $('#villageHistory').html("【沿革】" + cdata[min_index][9]);
+        $('#villageSpecial').html("【地方特色】" + cdata[min_index][10]);
+        $('#villageRefernce').html("【資料來源】");
         for (j = 0; j < cdata[min_index][12].length; j++) {
             if (j == 0) content = "<a href=\"" + cdata[min_index][12][j] + "\">" + cdata[min_index][11][j] + "</a>";
             else content = "、<a href=\"" + cdata[min_index][12][j] + "\">" + cdata[min_index][11][j] + "</a>";
@@ -202,15 +202,15 @@ $("#exampleDataList").change(function () {
         else {
             if (cdata[i][1] == $("#exampleDataList").val()) {
                 map.getView().animate({ center: ol.proj.fromLonLat([parseFloat(cdata[i][6]), parseFloat(cdata[i][7])]), zoom: 14, duration: 2000 });
-                $('#villageName').html("名稱：" + cdata[i][1]);
-                $('#villageTime').html("興建年份：" + cdata[i][3]);
-                $('#villageAddress').html("村址：" + cdata[i][2]);
-                $('#villageType').html("興建單位：" + cdata[i][4]);
-                $('#villageScale').html("興建戶數：" + cdata[i][5]);
-                $('#villageContent').html("簡介：" + cdata[i][8]);
-                $('#villageHistory').html("沿革：" + cdata[i][9]);
-                $('#villageSpecial').html("地方特色：" + cdata[i][10]);
-                $('#villageRefernce').html("資料來源：");
+                $('#villageName').html("【名稱】" + cdata[i][1]);
+                $('#villageTime').html("【興建年份】" + cdata[i][3]);
+                $('#villageAddress').html("【村址】" + cdata[i][2]);
+                $('#villageType').html("【興建單位】" + cdata[i][4]);
+                $('#villageScale').html("【興建戶數】" + cdata[i][5]);
+                $('#villageContent').html("【簡介】" + cdata[i][8]);
+                $('#villageHistory').html("【沿革】" + cdata[i][9]);
+                $('#villageSpecial').html("【地方特色】" + cdata[i][10]);
+                $('#villageRefernce').html("【資料來源】");
                 for (j = 0; j < cdata[i][12].length; j++) {
                     if (j == 0) content = "<a href=\"" + cdata[i][12][j] + "\">" + cdata[i][11][j] + "</a>";
                     else content = "、<a href=\"" + cdata[i][12][j] + "\">" + cdata[i][11][j] + "</a>";
