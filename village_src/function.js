@@ -163,7 +163,7 @@ for (i = 0; i < cdata.length; i++) {
                 for (j = 0; j < markbox.length; j++) {
                     var d = getdp(markbox[j].pos, pos);
                     if (d < mind) {
-                        $("#popup-content").html(cdata[j][0] + "(" + cdata[j][3] + ")");
+                        $("#popup-content").html(cdata[j][1] + "（" + cdata[j][3] + "）");
                         mind = d;
                     }
                 }
@@ -193,10 +193,17 @@ $("#exampleDataList").change(function () {
         else {
             if (cdata[i][1] == $("#exampleDataList").val()) {
                 map.getView().animate({ center: ol.proj.fromLonLat([parseFloat(cdata[i][6]), parseFloat(cdata[i][7])]), zoom: 14, duration: 2000 });
-                $('#villagename').html(cdata[i][1]);
-                $('#villagetime').html(cdata[i][3]);
-                $('#villagecontent').html(cdata[i][4] + ":" + cdata[i][5]);
-                $("#staticBackdropLabel").html(cdata[i][1] + "(" + cdata[i][3] + ")");
+                $('#villageName').html("名稱：" + cdata[i][1]);
+                $('#villageTime').html("興建年份：" + cdata[i][3]);
+                $('#villageAddress').html("村址：" + cdata[i][2]);
+                $('#villageType').html("興建單位：" + cdata[i][4]);
+                $('#villageScale').html("興建戶數：" + cdata[i][5]);
+                $('#villageContent').html("簡介：" + cdata[i][8]);
+                $('#villageHistory').html("沿革：" + cdata[i][9]);
+                $('#villageSpecial').html("地方特色：" + cdata[i][10]);
+                $('#villageRefernce').html("資料來源：" + cdata[i][11]);
+                $('#villageURL').html("外部連結：" + cdata[i][12]);
+                $("#staticBackdropLabel").html(cdata[i][1] + "（" + cdata[i][3] + "）");
                 $("#launch").click();
                 break;
             }
