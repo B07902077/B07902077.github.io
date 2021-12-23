@@ -202,6 +202,7 @@ $("#exampleDataList").change(function () {
                 console.log(cdata[i][1]);
                 console.log(cdata[i][11].length);
                 for (j = 0; j < cdata[i][11].length; j++) {
+                    $('#villageRefernce').children().remove();
                     if (j == 0) content = "<a href=\"" + cdata[i][12][j] + "\">" + cdata[i][11][j] + "</a>";
                     else content = "、<a href=\"" + cdata[i][12][j] + "\">" + cdata[i][11][j] + "</a>";
                     $('#villageRefernce').append(content);
