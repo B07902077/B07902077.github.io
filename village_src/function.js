@@ -84,21 +84,14 @@ function showVal(newVal) {
     } else {
         document.getElementById("valBox").innerHTML = "時間：至 " + newVal;
         for (i = 0; i < markbox.length; i++) {
-            console.log("val", newVal);
-            console.log(markbox[i]);
-            console.log(markbox[i].year);
-            console.log(markbox[i].shown);
             if (markbox[i].year > newVal && markbox[i].shown == 1) {
                 markbox[i].delete();
-                console.log("delete-1");
             }
             else if (checkArray[i] == 0 && markbox[i].shown == 1) {
                 markbox[i].delete();
-                console.log("delete-2");
             }
             else if (markbox[i].year <= newVal && checkArray[i] == 1 && markbox[i].shown == 0) {
                 markbox[i].create();
-                console.log("create");
             }
         }
     }
