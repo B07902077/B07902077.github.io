@@ -194,7 +194,7 @@ $("#exampleDataList").change(function () {
         else {
             if (cdata[i][1] == $("#exampleDataList").val()) {
                 map.getView().animate({ center: ol.proj.fromLonLat([parseFloat(cdata[i][6]), parseFloat(cdata[i][7])]), zoom: 14, duration: 2000 });
-                $('#villageName').html("【名稱】" + cdata[i][1]);
+                $('#villageName').html(cdata[i][1]);
                 $('#villageTime').html("【興建年份】" + cdata[i][3]);
                 $('#villageAddress').html("【村址】" + cdata[i][2]);
                 $('#villageType').html("【興建單位】" + cdata[i][4]);
