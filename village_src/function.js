@@ -70,9 +70,6 @@ for (i = 0; i < cdata.length; i++) {
 */
 
 function showVal(newVal) {
-    //var tf=document.getElementById("myCheck").checked;
-    // console.log(checkArray);
-
     if (document.getElementById("flexCheckDefault").checked) {
         var com = parseInt(newVal) + parseInt($("#inputyear").val());
         document.getElementById("valBox").innerHTML = "建立時間：" + newVal + "~" + com;
@@ -87,6 +84,10 @@ function showVal(newVal) {
     } else {
         document.getElementById("valBox").innerHTML = "時間：至 " + newVal;
         for (i = 0; i < markbox.length; i++) {
+            console.log("val", newVal);
+            console.log(markbox[i]);
+            console.log(markbox[i].year);
+            console.log(markbox[i].shown);
             if (markbox[i].year > newVal && markbox[i].shown == 1)
                 markbox[i].delete();
             else if (checkArray[i] == 0 && markbox[i].shown == 1)
