@@ -68,6 +68,7 @@ for (i = 0; i < cdata.length; i++) {
     timedata.push(cdata[choose]);
 }
 */
+
 function showVal(newVal) {
     //var tf=document.getElementById("myCheck").checked;
     // console.log(checkArray);
@@ -174,6 +175,8 @@ for (i = 0; i < cdata.length; i++) {
         }
     });
 }
+console.log(markbox);
+
 dragElement(document.getElementById("operation"));
 $("#exampleDataList").html(ken + '\n</datalist>')
 $("#exampleDataList").change(function () {
