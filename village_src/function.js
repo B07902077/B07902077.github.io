@@ -190,7 +190,7 @@ $("#exampleDataList").change(function () {
             alert("搜查不到結果");
         else {
             if (cdata[i][1] == $("#exampleDataList").val()) {
-                map.getView().animate({ center: ol.proj.fromLonLat([parseFloat(cdata[i][6]), parseFloat(cdata[i][7])]), zoom: 14, duration: 2000 });
+                map.getView().animate({ center: ol.proj.fromLonLat([parseFloat(cdata[i][7]), parseFloat(cdata[i][6])]), zoom: 14, duration: 2000 });
                 $('#villageName').html(cdata[i][1]);
                 $('#villageTime').html(cdata[i][3]);
                 $('#villageAddress').html(cdata[i][2]);
