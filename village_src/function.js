@@ -35,7 +35,8 @@ var markbox = [];
 function getdp(p1, p2) {
     return Math.pow(Math.pow(p1[0] - p2[0], 2) + Math.pow(p1[1] - p2[1], 2), 1 / 2)
 }
-/* ccdata排序cdata
+/* 
+ccdata排序cdata
 var ccdata = [];
 var basicmax = 26;
 for (i = 0; i < cdata.length; i++) {
@@ -52,7 +53,6 @@ for (i = 0; i < cdata.length; i++) {
     ccdata.push(cdata[choose]);
 }
 console.log(ccdata);
-
 var timedata = [];
 var basicmin = 1600;
 for (i = 0; i < cdata.length; i++) {
@@ -88,12 +88,18 @@ function showVal(newVal) {
             console.log(markbox[i]);
             console.log(markbox[i].year);
             console.log(markbox[i].shown);
-            if (markbox[i].year > newVal && markbox[i].shown == 1)
+            if (markbox[i].year > newVal && markbox[i].shown == 1){
                 markbox[i].delete();
-            else if (checkArray[i] == 0 && markbox[i].shown == 1)
+                console.log("delete-1");
+            }
+            else if (checkArray[i] == 0 && markbox[i].shown == 1){
                 markbox[i].delete();
-            else if (markbox[i].year <= newVal && checkArray[i] == 1 && markbox[i].shown == 0)
+                console.log("delete-2");
+            }
+            else if (markbox[i].year <= newVal && checkArray[i] == 1 && markbox[i].shown == 0){
                 markbox[i].create();
+                console.log("create");
+            }
         }
     }
 
