@@ -128,6 +128,7 @@ for (i = 0; i < cdata.length; i++) {
         $('#villageContent').html(cdata[min_index][8]);
         $('#villageHistory').html(cdata[min_index][9]);
         $('#villageSpecial').html(cdata[min_index][10]);
+        $('#villageRefernce').children().remove();
         for (j = 0; j < cdata[min_index][11].length; j++) {
             if (j == 0) content = "<a href=\"" + cdata[min_index][12][j] + "\">" + cdata[min_index][11][j] + "</a>";
             else content = "、<a href=\"" + cdata[min_index][12][j] + "\">" + cdata[min_index][11][j] + "</a>";
@@ -201,8 +202,8 @@ $("#exampleDataList").change(function () {
                 $('#villageSpecial').html(cdata[i][10]);
                 console.log(cdata[i][1]);
                 console.log(cdata[i][11].length);
+                $('#villageRefernce').children().remove();
                 for (j = 0; j < cdata[i][11].length; j++) {
-                    $('#villageRefernce').children().remove();
                     if (j == 0) content = "<a href=\"" + cdata[i][12][j] + "\">" + cdata[i][11][j] + "</a>";
                     else content = "、<a href=\"" + cdata[i][12][j] + "\">" + cdata[i][11][j] + "</a>";
                     $('#villageRefernce').append(content);
