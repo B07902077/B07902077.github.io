@@ -25,7 +25,7 @@ for (i = 0; i < data.length; i++) {
     cdata.push(get)
     checkArray.push(1);
 }
-console.log('cdata: ', cdata);
+// console.log('cdata: ', cdata);
 // console.log('checkArray: ', checkArray);
 
 var markbox = [];
