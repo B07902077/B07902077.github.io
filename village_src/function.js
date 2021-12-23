@@ -12,7 +12,7 @@ function readTextFile(file) {
     }
     rawFile.send(null);
 }
-readTextFile("village_src/reclamation.txt")
+readTextFile("village_src/village.txt")
 var data = readget.split('\n');
 console.log('data: ', data);
 var cdata = [];
@@ -20,8 +20,11 @@ var checkArray = [];
 for (i = 0; i < data.length; i++) {
     c = data[i].split(',');
     // console.log(c);
-    var len = c[0].length + c[1].length + c[2].length + c[3].length;
-    var get = [c[0], parseFloat(c[1]), parseFloat(c[2]), parseInt(c[3]), c[4], c[5]];
+    let len = 0;
+    for(j = 0; j <= 11; j++){
+        len = len + c[j].length;
+    }
+    var get = [parseInt(c[0]), c[1], c[2], parseInt(c[3]), c[4], parseInt(c[5]), parseFloat(c[6]), parseFloat(c[7]), c[8], c[9], c[10], c[11]];
     cdata.push(get)
     checkArray.push(1);
 }
@@ -32,13 +35,14 @@ var markbox = [];
 function getdp(p1, p2) {
     return Math.pow(Math.pow(p1[0] - p2[0], 2) + Math.pow(p1[1] - p2[1], 2), 1 / 2)
 }
+/* ccdata排序cdata
 var ccdata = [];
 var basicmax = 26;
 for (i = 0; i < cdata.length; i++) {
     var choose = 0;
     var basic = 0;
     for (j = 0; j < cdata.length; j++) {
-        if ((parseFloat(cdata[j][1]) > basic && parseFloat(cdata[j][1]) < basicmax)) {
+        if ((parseFloat(cdata[j][6]) > basic && parseFloat(cdata[j][6]) < basicmax)) {
             basic = parseFloat(cdata[j][1]);
             choose = j;
         }
@@ -48,7 +52,7 @@ for (i = 0; i < cdata.length; i++) {
     ccdata.push(cdata[choose]);
 }
 console.log(ccdata);
-/*
+
 var timedata = [];
 var basicmin = 1600;
 for (i = 0; i < cdata.length; i++) {
@@ -104,10 +108,10 @@ var namelist = ['', ''];
 var bookkendata = "";
 var arrowtext = "";
 
-for (i = 0; i < ccdata.length; i++) {
-    ken += '\n<option id="searchinput' + i + '" value="' + ccdata[i][0] + '">';
-    var pos = [parseFloat(ccdata[i][2]), parseFloat(ccdata[i][1])];
-    var mark = new mapMark(pos, parseInt(ccdata[i][3]));
+for (i = 0; i < cdata.length; i++) {
+    ken += '\n<option id="searchinput' + i + '" value="' + cdata[i][1] + '">'; //名稱
+    var pos = [parseFloat(cdata[i][6]), parseFloat(cdata[i][7])]; //經緯度
+    var mark = new mapMark(pos, parseInt(cdata[i][3])); //年代
     mark.addEvtClick(function (coordinate) {
         var pos = ol.proj.transform(coordinate, 'EPSG:3857', 'EPSG:4326');
         var distance = 1;
@@ -118,10 +122,10 @@ for (i = 0; i < ccdata.length; i++) {
                 min_index = j;
             }
         }
-        $('#villagename').html(ccdata[min_index][0]);
-        $('#villagetime').html(ccdata[min_index][3]);
-        $('#villagecontent').html(ccdata[min_index][4] + ":" + ccdata[min_index][5]);
-        $("#staticBackdropLabel").html(ccdata[min_index][0] + "(" + ccdata[min_index][3] + ")");
+        $('#villagename').html(cdata[min_index][1]);
+        $('#villagetime').html(cdata[min_index][3]);
+        $('#villagecontent').html(cdata[min_index][4] + ":" + cdata[min_index][5]);
+        $("#staticBackdropLabel").html(cdata[min_index][1] + "(" + cdata[min_index][3] + ")");
 
         $("#launch").click();
     });
@@ -151,7 +155,7 @@ for (i = 0; i < ccdata.length; i++) {
                 for (j = 0; j < markbox.length; j++) {
                     var d = getdp(markbox[j].pos, pos);
                     if (d < mind) {
-                        $("#popup-content").html(ccdata[j][0] + "(" + ccdata[j][3] + ")");
+                        $("#popup-content").html(cdata[j][0] + "(" + cdata[j][3] + ")");
                         mind = d;
                     }
                 }
@@ -173,16 +177,16 @@ for (i = 0; i < ccdata.length; i++) {
 dragElement(document.getElementById("operation"));
 $("#exampleDataList").html(ken + '\n</datalist>')
 $("#exampleDataList").change(function () {
-    for (i = 0; i < ccdata.length + 1; i++) {
-        if (i == ccdata.length && $("#exampleDataList").val() != "")
+    for (i = 0; i < cdata.length + 1; i++) {
+        if (i == cdata.length && $("#exampleDataList").val() != "")
             alert("搜查不到結果");
         else {
-            if (ccdata[i][0] == $("#exampleDataList").val()) {
-                map.getView().animate({ center: ol.proj.fromLonLat([parseFloat(ccdata[i][2]), parseFloat(ccdata[i][1])]), zoom: 14, duration: 2000 });
-                $('#villagename').html(ccdata[i][0]);
-                $('#villagetime').html(ccdata[i][3]);
-                $('#villagecontent').html(ccdata[i][4] + ":" + ccdata[i][5]);
-                $("#staticBackdropLabel").html(ccdata[i][0] + "(" + ccdata[i][3] + ")");
+            if (cdata[i][0] == $("#exampleDataList").val()) {
+                map.getView().animate({ center: ol.proj.fromLonLat([parseFloat(cdata[i][6]), parseFloat(cdata[i][7])]), zoom: 14, duration: 2000 });
+                $('#villagename').html(cdata[i][1]);
+                $('#villagetime').html(cdata[i][3]);
+                $('#villagecontent').html(cdata[i][4] + ":" + cdata[i][5]);
+                $("#staticBackdropLabel").html(cdata[i][1] + "(" + cdata[i][3] + ")");
                 $("#launch").click();
                 break;
             }
@@ -196,10 +200,13 @@ $("#DataSearch").change(function () {
     let check = [];
     console.log('searchWord: ', searchWord);
 
-    for (i = 0; i < ccdata.length; i++) {
-        // console.log(ccdata[i][4]);
-        // 目前只搜尋 ccdata[i][4]]、ccdata[i][5]，應再新增其他欄位的搜尋。
-        if (ccdata[i][4].includes(searchWord) || ccdata[i][5].includes(searchWord)) check.push(1);
+    for (i = 0; i < cdata.length; i++) {
+        // console.log(cdata[i][4]);
+        // 目前只搜尋 cdata[i][4]]、cdata[i][5]，應再新增其他欄位的搜尋。
+        if (cdata[i][1].includes(searchWord) || cdata[i][2].includes(searchWord) || cdata[i][4].includes(searchWord) || 
+            cdata[i][8].includes(searchWord) || cdata[i][9].includes(searchWord) || cdata[i][10].includes(searchWord) || cdata[i][11].includes(searchWord)){
+            check.push(1);
+        }
         else check.push(0);
     }
     checkArray = check;
@@ -210,7 +217,7 @@ $("#DataSearch").change(function () {
 
 function clearSearch() {
     let check = [];
-    for (i = 0; i < ccdata.length; i++) {
+    for (i = 0; i < cdata.length; i++) {
         check.push(1);
     }
     checkArray = check;
