@@ -14,7 +14,7 @@ function readTextFile(file) {
 }
 readTextFile("village_src/village.txt")
 var data = readget.split('\n');
-console.log('data: ', data);
+// console.log('data: ', data);
 var cdata = [];
 var checkArray = [];
 for (i = 0; i < data.length; i++) {
@@ -22,14 +22,13 @@ for (i = 0; i < data.length; i++) {
 
     urlname = c[11].split('、');
     urls = c[12].split('、');
-    console.log(urlname, urls);
-
+    
     var get = [parseInt(c[0]), c[1], c[2], parseInt(c[3]), c[4], parseInt(c[5]), parseFloat(c[6]), parseFloat(c[7]), c[8], c[9], c[10], urlname, urls];
     cdata.push(get)
     checkArray.push(1);
 }
-console.log('cdata: ', cdata);
-console.log('checkArray: ', checkArray);
+// console.log('cdata: ', cdata);
+// console.log('checkArray: ', checkArray);
 
 var markbox = [];
 function getdp(p1, p2) {
@@ -217,7 +216,6 @@ $("#exampleDataList").change(function () {
     }
 });
 
-console.log("test search");
 $("#DataSearch").change(function () {
     let searchWord = $("#DataSearch").val();
     let check = [];
