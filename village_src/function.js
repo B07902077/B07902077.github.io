@@ -122,7 +122,7 @@ for (i = 0; i < cdata.length; i++) {
                 min_index = j;
             }
         }
-        $('#villageName').html("【名稱】" + cdata[min_index][1]);
+        $('#villageName').html(cdata[min_index][1]);
         $('#villageTime').html("【興建年份】" + cdata[min_index][3]);
         $('#villageAddress').html("【村址】" + cdata[min_index][2]);
         $('#villageType').html("【興建單位】" + cdata[min_index][4]);
