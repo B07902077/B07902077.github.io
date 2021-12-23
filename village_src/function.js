@@ -140,7 +140,8 @@ for (i = 0; i < cdata.length; i++) {
         $('#villageSpecial').html("地方特色：" + cdata[min_index][10]);
         $('#villageRefernce').html("資料來源：");
         for (j = 0; j < cdata[min_index][12].length; j++) {
-            content = "<a href=\"" + cdata[min_index][12][j] + "\">" + cdata[min_index][11][j] + "</a>";
+            if (j == 0) content = "<a href=\"" + cdata[min_index][12][j] + "\">" + cdata[min_index][11][j] + "</a>";
+            else content = "、<a href=\"" + cdata[min_index][12][j] + "\">" + cdata[min_index][11][j] + "</a>";
             $('#villageRefernce').append(content);
         }
         $("#staticBackdropLabel").html(cdata[min_index][1] + "（" + cdata[min_index][3] + "）");
@@ -211,7 +212,8 @@ $("#exampleDataList").change(function () {
                 $('#villageSpecial').html("地方特色：" + cdata[i][10]);
                 $('#villageRefernce').html("資料來源：");
                 for (j = 0; j < cdata[i][12].length; j++) {
-                    content = "<a href=\"" + cdata[i][12][j] + "\">" + cdata[i][11][j] + "</a>";
+                    if (j == 0) content = "<a href=\"" + cdata[i][12][j] + "\">" + cdata[i][11][j] + "</a>";
+                    else content = "、<a href=\"" + cdata[i][12][j] + "\">" + cdata[i][11][j] + "</a>";
                     $('#villageRefernce').append(content);
                 }
                 $("#staticBackdropLabel").html(cdata[i][1] + "（" + cdata[i][3] + "）");
