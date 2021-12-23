@@ -199,6 +199,8 @@ $("#exampleDataList").change(function () {
                 $('#villageContent').html(cdata[i][8]);
                 $('#villageHistory').html(cdata[i][9]);
                 $('#villageSpecial').html(cdata[i][10]);
+                console.log(cdata[i][1]);
+                console.log(cdata[i][11].length);
                 for (j = 0; j < cdata[i][11].length; j++) {
                     if (j == 0) content = "<a href=\"" + cdata[i][12][j] + "\">" + cdata[i][11][j] + "</a>";
                     else content = "、<a href=\"" + cdata[i][12][j] + "\">" + cdata[i][11][j] + "</a>";
