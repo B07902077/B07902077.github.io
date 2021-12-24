@@ -120,6 +120,7 @@ for (i = 0; i < cdata.length; i++) {
                 min_index = j;
             }
         }
+        $('#villageNo').html(cdata[min_index][0]);
         $('#villageName').html(cdata[min_index][1]);
         $('#villageTime').html(cdata[min_index][3]);
         $('#villageAddress').html(cdata[min_index][2]);
@@ -193,6 +194,7 @@ $("#exampleDataList").change(function () {
         else {
             if (cdata[i][1] == $("#exampleDataList").val()) {
                 map.getView().animate({ center: ol.proj.fromLonLat([parseFloat(cdata[i][7]), parseFloat(cdata[i][6])]), zoom: 14, duration: 2000 });
+                $('#villageNo').html(cdata[i][0]);
                 $('#villageName').html(cdata[i][1]);
                 $('#villageTime').html(cdata[i][3]);
                 $('#villageAddress').html(cdata[i][2]);
