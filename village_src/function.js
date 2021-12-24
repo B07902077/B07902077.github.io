@@ -79,6 +79,7 @@ for (i = 0; i < cdata.length; i++) {
     var mark = new mapMark(pos, parseInt(cdata[i][3]), data[i][0]); //年代
     mark.addEvtClick(function (coordinate) {
         var index = mark.id;
+        console.log(index);
         var min_index;
         for (j = 0; j < markbox.length; j++) {
             if (markbox[j].id === index) {
