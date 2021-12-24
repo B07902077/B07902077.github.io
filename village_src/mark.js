@@ -30,7 +30,6 @@ class mapMark{
         this.markVectorSource.addFeature(this.iconFeature);
         this.markVectorSource.addFeature(new ol.Feature({
             geometry:new ol.geom.Circle(ol.proj.fromLonLat(this.pos),100)}));
-        this.markVectorSource.addFeature(this.id);
         map.removeLayer(this.markVectorLayer);
         map.addLayer(this.markVectorLayer);
         this.shown=1;
