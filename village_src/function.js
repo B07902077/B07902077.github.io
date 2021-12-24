@@ -80,7 +80,7 @@ for (i = 0; i < cdata.length; i++) {
     var year = cdata[i][0];
     mark.addEvtClick(function(year) {
         var index = year;
-        console.log(index);
+        console.log("year:", index);
         var min_index;
         for (j = 0; j < markbox.length; j++) {
             if (markbox[j].id === index) {
