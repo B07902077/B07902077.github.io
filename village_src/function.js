@@ -76,7 +76,7 @@ var arrowtext = "";
 for (i = 0; i < cdata.length; i++) {
     ken += '\n<option id="searchinput' + i + '" value="' + cdata[i][1] + '">'; //名稱
     var pos = [parseFloat(cdata[i][7]), parseFloat(cdata[i][6])]; //經緯度
-    var mark = new mapMark(pos, parseInt(cdata[i][3]), data[i][0]); //年代
+    var mark = new mapMark(pos, parseInt(cdata[i][3]), cdata[i][0]); //年代
     mark.addEvtClick(function (coordinate) {
         var index = mark.id;
         console.log(index);
