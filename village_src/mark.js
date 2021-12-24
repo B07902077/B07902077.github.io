@@ -28,6 +28,7 @@ class mapMark{
         });
         this.iconFeature.setStyle(iconStyle);
         this.markVectorSource.addFeature(this.iconFeature);
+        this.markVectorSource.addFeature(this.id);
         this.markVectorSource.addFeature(new ol.Feature({
             geometry:new ol.geom.Circle(ol.proj.fromLonLat(this.pos),100)}));
         map.removeLayer(this.markVectorLayer);
