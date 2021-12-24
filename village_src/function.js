@@ -79,7 +79,7 @@ for (i = 0; i < cdata.length; i++) {
     mark.addEvtClick(function(coordinate) {
         var index = 0;
         console.log(index);
-        var min_index;
+        var min_index = 0;
         for (j = 0; j < markbox.length; j++) {
             if (markbox[j].id === index) {
                 min_index = j;
