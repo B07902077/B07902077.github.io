@@ -77,10 +77,9 @@ for (i = 0; i < cdata.length; i++) {
     ken += '\n<option id="searchinput' + i + '" value="' + cdata[i][1] + '">'; //名稱
     var pos = [parseFloat(cdata[i][7]), parseFloat(cdata[i][6])]; //經緯度
     var mark = new mapMark(pos, parseInt(cdata[i][3]), cdata[i][0]); //年代
-    var year = cdata[i][0];
-    mark.addEvtClick(function(year) {
-        var index = year;
-        console.log("year:", index);
+    mark.addEvtClick(function(coordinate) {
+        var index = 0;
+        console.log(index);
         var min_index;
         for (j = 0; j < markbox.length; j++) {
             if (markbox[j].id === index) {
