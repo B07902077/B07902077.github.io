@@ -47,7 +47,7 @@ class mapMark{
             map.addInteraction(selectClick);
             selectClick.on('select', function(e) {
                 var iconSelect = e.target;
-                console.log("e.target.id", e.target.id);
+                console.log("e.target", e.target);
                 var iconCollection = iconSelect.getFeatures();
                 var iconFeatures = iconCollection.getArray();
                 if(iconFeatures.length > 0){
