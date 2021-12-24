@@ -32,39 +32,6 @@ var markbox = [];
 function getdp(p1, p2) {
     return Math.pow(Math.pow(p1[0] - p2[0], 2) + Math.pow(p1[1] - p2[1], 2), 1 / 2)
 }
-/* 
-ccdata排序cdata
-var ccdata = [];
-var basicmax = 26;
-for (i = 0; i < cdata.length; i++) {
-    var choose = 0;
-    var basic = 0;
-    for (j = 0; j < cdata.length; j++) {
-        if ((parseFloat(cdata[j][6]) > basic && parseFloat(cdata[j][6]) < basicmax)) {
-            basic = parseFloat(cdata[j][1]);
-            choose = j;
-        }
-    }
-    basicmax = basic;
-    // console.log(cdata[choose]);
-    ccdata.push(cdata[choose]);
-}
-console.log(ccdata);
-var timedata = [];
-var basicmin = 1600;
-for (i = 0; i < cdata.length; i++) {
-    var choose = 0;
-    var basic = 2000;
-    for (j = 0; j < cdata.length; j++) {
-        if ((parseInt(cdata[j][3]) < basic && parseInt(cdata[j][3]) > basicmin)) {
-            basic = parseInt(cdata[j][3]);
-            choose = j;
-        }
-    }
-    basicmin = basic;
-    timedata.push(cdata[choose]);
-}
-*/
 
 function showVal(newVal) {
     if (document.getElementById("flexCheckDefault").checked) {
