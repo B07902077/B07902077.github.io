@@ -19,7 +19,7 @@ var cdata = [];
 var checkArray = [];
 console.log("edit")
 for (i = 0; i < data.length; i++) {
-    c = data[i].split(',');
+    c = data[i].split('\t');
 
     var get = [parseInt(c[0]), c[1], c[2], parseInt(c[3]), c[4], parseInt(c[5]), parseFloat(c[6]), parseFloat(c[7]), c[8], c[9], c[10], c[11].split('、'), c[12].split('、')];
     cdata.push(get)
