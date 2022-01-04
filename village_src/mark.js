@@ -12,6 +12,7 @@ class mapMark{
             source: this.markVectorSource
         });
         this.iconFeature = new ol.Feature({
+            id: id,
             geometry: new ol.geom.Point(ol.proj.fromLonLat(coordinate)),
         });
         this.shown=1;
