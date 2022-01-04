@@ -75,10 +75,10 @@ function showVal(type, newVal) {
 
 }
 $('#flexCheckDefault').change(function () {
-    showVal($("#exslider").val())
+    showVal(0, $("#exslider").val())
 });
 $("#inputyear").on('input', function () {
-    showVal($("#exslider").val())
+    showVal(0, $("#exslider").val())
 });
 $("#launch").hide()
 var ken = '<datalist id="datalistOptions">';
@@ -237,7 +237,7 @@ $("#DataSearch").change(function () {
     checkArray = check;
     console.log('check: ', check);
     console.log('checkArray: ', checkArray);
-    showVal($("#exslider").val());
+    showVal(0, $("#exslider").val());
 });
 
 function clearSearch() {
@@ -247,7 +247,7 @@ function clearSearch() {
     }
     checkArray = check;
     $("#DataSearch").val("");
-    showVal($("#exslider").val());
+    showVal(0, $("#exslider").val());
 }
 
 function dragElement(elmnt) {
