@@ -90,9 +90,10 @@ for (i = 0; i < cdata.length; i++) {
             dy = dy < 0 ? -dy : dy;
 
             if (dx > distance1 || dy > distance1) continue;
-            if (getdp(dx, dy) < distance2) {
+            var d = getdp(dx, dy);
+            if (d < distance2) {
                 min_index = j;
-                break;
+                distance2 = d;
             }
         }
 
@@ -136,7 +137,7 @@ for (i = 0; i < cdata.length; i++) {
                 }));
                 map.addOverlay(popOverlay);
                 var pos = ol.proj.transform(coordinate, 'EPSG:3857', 'EPSG:4326');
-
+                var distance = 0.000025;
                 for (j = 0; j < markbox.length; j++) {
                     var dx = markbox[j].pos[0] - pos[0];
                     var dy = markbox[j].pos[1] - pos[1];
@@ -148,9 +149,9 @@ for (i = 0; i < cdata.length; i++) {
                     }
                     // console.log(dx, dy);
                     var d = getdp(dx, dy);
-                    if (d < 0.000025) {
+                    if (d < distance) {
                         $("#popup-content").html(cdata[j][1] + "（" + cdata[j][3] + "）");
-                        break;
+                        distance = d;
                     }
                 }
 
