@@ -17,10 +17,9 @@ var data = readget.split('\n');
 // console.log('data: ', data);
 var cdata = [];
 var checkArray = [];
-console.log("edit")
+console.log("edit-1224-2")
 for (i = 0; i < data.length; i++) {
     c = data[i].split(',');
-
     var get = [parseInt(c[0]), c[1], c[2], parseInt(c[3]), c[4], parseInt(c[5]), parseFloat(c[6]), parseFloat(c[7]), c[8], c[9], c[10], c[11].split('、'), c[12].split('、')];
     cdata.push(get)
     checkArray.push(1);
@@ -76,14 +75,13 @@ var arrowtext = "";
 for (i = 0; i < cdata.length; i++) {
     ken += '\n<option id="searchinput' + i + '" value="' + cdata[i][1] + '">'; //名稱
     var pos = [parseFloat(cdata[i][7]), parseFloat(cdata[i][6])]; //經緯度
-    var mark = new mapMark(pos, parseInt(cdata[i][3]), data[i][0]); //年代
-    mark.addEvtClick(function (coordinate) {
-        var pos = ol.proj.transform(coordinate, 'EPSG:3857', 'EPSG:4326');
-        var distance = 1;
+    var mark = new mapMark(pos, parseInt(cdata[i][3]), cdata[i][0]); //年代
+    mark.addEvtClick(function(coordinate) {
+        var index = 0;
+        console.log(index);
         var min_index = 0;
         for (j = 0; j < markbox.length; j++) {
-            if (getdp(markbox[j].pos, pos) < distance) {
-                distance = getdp(markbox[j].pos, pos);
+            if (markbox[j].id === index) {
                 min_index = j;
             }
         }
