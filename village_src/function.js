@@ -17,7 +17,7 @@ var data = readget.split('\n');
 // console.log('data: ', data);
 var cdata = [];
 var checkArray = [];
-console.log("edit0104-3")
+console.log("edit0104-4")
 for (i = 0; i < data.length; i++) {
     c = data[i].split('\t');
 
@@ -143,9 +143,9 @@ for (i = 0; i < cdata.length; i++) {
                     var dy = markbox[j].pos[1] - pos[1];
                     dx = dx < 0 ? -dx : dx;
                     dy = dy < 0 ? -dy : dy;
-
-                    // var d = getdp(dx, dy);
-                    if (dx < mind && dy < mind) {
+                    console.log(dx, dy);
+                    var d = getdp(dx, dy);
+                    if (d < mind) {
                         $("#popup-content").html(cdata[j][1] + "（" + cdata[j][3] + "）");
                         break;
                     }
