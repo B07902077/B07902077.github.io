@@ -30,7 +30,7 @@ for (i = 0; i < data.length; i++) {
 
 var markbox = [];
 function getdp(p1, p2) {
-    return Math.pow(p1[0] - p2[0], 2) + Math.pow(p1[1] - p2[1], 2)
+    return Math.pow(p1, 2) + Math.pow(p2, 2)
 }
 
 function showVal(newVal) {
@@ -84,13 +84,13 @@ for (i = 0; i < cdata.length; i++) {
         var distance1 = 3e-14;
         var min_index = 0;
         for (j = 0; j < markbox.length; j++) {
-            dx = markbox[j].pos[0] - pos[0];
-            dy = markbox[j].pos[1] - pos[1];
-            dx = dx < 0? -dx : dx;
-            dy = dy < 0? -dy : dy;
+            var dx = markbox[j].pos[0] - pos[0];
+            var dy = markbox[j].pos[1] - pos[1];
+            dx = dx < 0 ? -dx : dx;
+            dy = dy < 0 ? -dy : dy;
 
             if (dx > distance1 || dy > distance1) continue;
-            if (getdp(markbox[j].pos, pos) < distance2) {
+            if (getdp(dx, dy) < distance2) {
                 min_index = j;
                 break;
             }
@@ -139,13 +139,18 @@ for (i = 0; i < cdata.length; i++) {
                 var pos = ol.proj.transform(coordinate, 'EPSG:3857', 'EPSG:4326');
                 var mind = 0.0001;
                 for (j = 0; j < markbox.length; j++) {
-                    var d = getdp(markbox[j].pos, pos);
+                    var dx = markbox[j].pos[0] - pos[0];
+                    var dy = markbox[j].pos[1] - pos[1];
+                    dx = dx < 0 ? -dx : dx;
+                    dy = dy < 0 ? -dy : dy;
+
+                    var d = getdp(dx, dy);
                     if (d < mind) {
                         $("#popup-content").html(cdata[j][1] + "（" + cdata[j][3] + "）");
-                        mind = d;
+                        break;
                     }
                 }
-                console.log(mind)
+                // console.log(mind)
                 popOverlay.setPosition(coordinate);
                 closer.onclick = function () {
                     popOverlay.setPosition(undefined);
