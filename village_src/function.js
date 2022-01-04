@@ -130,9 +130,9 @@ for (i = 0; i < cdata.length; i++) {
                     element: container,
                     autoPan: true,
                     autoPanAnimation: {
-                        duration: 150
+                        duration: 100
                     },
-                    offset: [10, -20]
+                    offset: [10, -10]
                 }));
                 map.addOverlay(popOverlay);
                 var pos = ol.proj.transform(coordinate, 'EPSG:3857', 'EPSG:4326');
