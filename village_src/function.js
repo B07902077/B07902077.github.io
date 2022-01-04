@@ -75,12 +75,12 @@ var arrowtext = "";
 
 for (i = 0; i < cdata.length; i++) {
     ken += '\n<option id="searchinput' + i + '" value="' + cdata[i][1] + '">'; //名稱
-    var pos = [parseFloat(cdata[i][7]), parseFloat(cdata[i][6])]; //經緯度
-    var mark = new mapMark(pos, parseInt(cdata[i][3]), data[i][0]); //年代
+    var position = [parseFloat(cdata[i][7]), parseFloat(cdata[i][6])]; //經緯度
+    var mark = new mapMark(position, parseInt(cdata[i][3]), data[i][0]); //年代
     mark.addEvtClick(function (coordinate) {
         var pos = ol.proj.transform(coordinate, 'EPSG:3857', 'EPSG:4326');
         console.log(pos);
-        var distance = 1e-27;
+        var distance = 1e-26;
         var min_index = 0;
         for (j = 0; j < markbox.length; j++) {
             dx = markbox[j].pos[0] - pos[0];
