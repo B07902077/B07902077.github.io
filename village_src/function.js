@@ -132,7 +132,7 @@ for (i = 0; i < cdata.length; i++) {
                     autoPanAnimation: {
                         duration: 100
                     },
-                    offset: [10, -10]
+                    offset: [1, -1]
                 }));
                 map.addOverlay(popOverlay);
                 var pos = ol.proj.transform(coordinate, 'EPSG:3857', 'EPSG:4326');
