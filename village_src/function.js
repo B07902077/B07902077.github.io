@@ -29,7 +29,7 @@ for (i = 0; i < data.length; i++) {
 // console.log('checkArray: ', checkArray);
 
 var markbox = [];
-function getdp(x, y) {
+function getdp(p1, p2) {
     return Math.pow(p1[0] - p2[0], 2) + Math.pow(p1[1] - p2[1], 2)
 }
 
