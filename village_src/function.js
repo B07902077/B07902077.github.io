@@ -148,7 +148,7 @@ for (i = 0; i < cdata.length; i++) {
                     }
                     // console.log(dx, dy);
                     var d = getdp(dx, dy);
-                    if (d < 0.000001) {
+                    if (d < 0.00001) {
                         $("#popup-content").html(cdata[j][1] + "（" + cdata[j][3] + "）");
                         break;
                     }
