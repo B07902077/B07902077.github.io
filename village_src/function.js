@@ -143,9 +143,9 @@ for (i = 0; i < cdata.length; i++) {
                     var dy = markbox[j].pos[1] - pos[1];
                     dx = dx < 0 ? -dx : dx;
                     dy = dy < 0 ? -dy : dy;
-                    console.log(dx, dy);
+                    // console.log(dx, dy);
                     var d = getdp(dx, dy);
-                    console.log(d)
+                    // console.log(d)
                     // if (d < mind) {
                     if (dx < 1e-7 && dy < 1e-7) {
                         $("#popup-content").html(cdata[j][1] + "（" + cdata[j][3] + "）");
