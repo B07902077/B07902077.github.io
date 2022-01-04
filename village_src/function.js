@@ -86,10 +86,10 @@ for (i = 0; i < cdata.length; i++) {
         for (j = 0; j < markbox.length; j++) {
             var dx = markbox[j].pos[0] - pos[0];
             var dy = markbox[j].pos[1] - pos[1];
-            dx = dx < 0 ? -dx : dx;
-            dy = dy < 0 ? -dy : dy;
+            // dx = dx < 0 ? -dx : dx;
+            // dy = dy < 0 ? -dy : dy;
 
-            if (dx > distance1 || dy > distance1) continue;
+            // if (dx > distance1 || dy > distance1) continue;
             var d = getdp(dx, dy);
             if (d < distance2) {
                 min_index = j;
@@ -137,16 +137,13 @@ for (i = 0; i < cdata.length; i++) {
                 }));
                 map.addOverlay(popOverlay);
                 var pos = ol.proj.transform(coordinate, 'EPSG:3857', 'EPSG:4326');
-                var distance = 0.000001;
+                var distance = 0.000025;
                 for (j = 0; j < markbox.length; j++) {
                     var dx = markbox[j].pos[0] - pos[0];
                     var dy = markbox[j].pos[1] - pos[1];
-                    dx = dx < 0 ? -dx : dx;
-                    dy = dy < 0 ? -dy : dy;
+                    // dx = dx < 0 ? -dx : dx;
+                    // dy = dy < 0 ? -dy : dy;
 
-                    if (dx > 0.001 || dy > 0.001) {
-                        continue;
-                    }
                     // console.log(dx, dy);
                     var d = getdp(dx, dy);
                     if (d < distance) {
