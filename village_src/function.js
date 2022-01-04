@@ -135,9 +135,8 @@ for (i = 0; i < cdata.length; i++) {
                     offset: [10, -20]
                 }));
                 map.addOverlay(popOverlay);
-                var hdms = ol.coordinate.toStringHDMS(ol.proj.transform(coordinate, 'EPSG:3857', 'EPSG:4326'));
                 var pos = ol.proj.transform(coordinate, 'EPSG:3857', 'EPSG:4326');
-                var mind = 0.0001;
+
                 for (j = 0; j < markbox.length; j++) {
                     var dx = markbox[j].pos[0] - pos[0];
                     var dy = markbox[j].pos[1] - pos[1];
@@ -149,12 +148,12 @@ for (i = 0; i < cdata.length; i++) {
                     }
                     console.log(dx, dy);
                     var d = getdp(dx, dy);
-                    if (d < mind) {
+                    if (d < 0.0001) {
                         $("#popup-content").html(cdata[j][1] + "（" + cdata[j][3] + "）");
                         break;
                     }
                 }
-                // console.log(mind)
+
                 popOverlay.setPosition(coordinate);
                 closer.onclick = function () {
                     popOverlay.setPosition(undefined);
