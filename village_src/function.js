@@ -143,11 +143,12 @@ for (i = 0; i < cdata.length; i++) {
                     var dy = markbox[j].pos[1] - pos[1];
                     dx = dx < 0 ? -dx : dx;
                     dy = dy < 0 ? -dy : dy;
-                    // console.log(dx, dy);
+
+                    if (dx > 1e-7 && dy > 1e-7) {
+                        continue;
+                    }
                     var d = getdp(dx, dy);
-                    // console.log(d)
-                    // if (d < mind) {
-                    if (dx < 1e-8 && dy < 1e-8) {
+                    if (d < mind) {
                         $("#popup-content").html(cdata[j][1] + "（" + cdata[j][3] + "）");
                         break;
                     }
