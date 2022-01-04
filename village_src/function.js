@@ -146,7 +146,8 @@ for (i = 0; i < cdata.length; i++) {
                     console.log(dx, dy);
                     var d = getdp(dx, dy);
                     console.log(d)
-                    if (d < mind) {
+                    // if (d < mind) {
+                    if (dx < 1e-7 && dy < 1e-7) {
                         $("#popup-content").html(cdata[j][1] + "（" + cdata[j][3] + "）");
                         break;
                     }
