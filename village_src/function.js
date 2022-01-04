@@ -33,8 +33,8 @@ function getdp(p1, p2) {
     return Math.pow(p1, 2) + Math.pow(p2, 2)
 }
 
-function showVal(newVal) {
-    if (document.getElementById("flexCheckDefault").checked) {
+function showVal(type, newVal) {
+    if (document.getElementById("flexCheckDefault").checked && type === 0) {
         var com = parseInt(newVal) + parseInt($("#inputyear").val());
         document.getElementById("valBox").innerHTML = "建立時間：" + newVal + "~" + com;
         for (i = 0; i < markbox.length; i++) {
@@ -45,7 +45,7 @@ function showVal(newVal) {
             else if (markbox[i].year >= newVal && markbox[i].year <= com && checkArray[i] == 1 && markbox[i].shown == 0)
                 markbox[i].create();
         }
-    } else {
+    } else if (type === 0) {
         document.getElementById("valBox").innerHTML = "時間：至 " + newVal;
         for (i = 0; i < markbox.length; i++) {
             if (markbox[i].year > newVal && markbox[i].shown == 1) {
@@ -55,6 +55,19 @@ function showVal(newVal) {
                 markbox[i].delete();
             }
             else if (markbox[i].year <= newVal && checkArray[i] == 1 && markbox[i].shown == 0) {
+                markbox[i].create();
+            }
+        }
+    } else if (type === 1) {
+        document.getElementById("valBox2").innerHTML = "規模：小於 " + newVal + " 戶";
+        for (i = 0; i < markbox.length; i++) {
+            if (markbox[i].scale >= newVal && markbox[i].shown == 1) {
+                markbox[i].delete();
+            }
+            else if (checkArray[i] == 0 && markbox[i].shown == 1) {
+                markbox[i].delete();
+            }
+            else if (markbox[i].scale < newVal && checkArray[i] == 1 && markbox[i].shown == 0) {
                 markbox[i].create();
             }
         }
@@ -76,10 +89,10 @@ var arrowtext = "";
 for (i = 0; i < cdata.length; i++) {
     ken += '\n<option id="searchinput' + i + '" value="' + cdata[i][1] + '">'; //名稱
     var position = [parseFloat(cdata[i][7]), parseFloat(cdata[i][6])]; //經緯度
-    var mark = new mapMark(position, parseInt(cdata[i][3]), data[i][0]); //年代
+    var mark = new mapMark(position, parseInt(cdata[i][3]), parseInt(cdata[i][5])); //年代
     mark.addEvtClick(function (coordinate) {
         var pos = ol.proj.transform(coordinate, 'EPSG:3857', 'EPSG:4326');
-        console.log(pos);
+        // console.log(pos);
         var distance2 = 0.0005;
         var distance1 = 0.001;
         var min_index = 0;

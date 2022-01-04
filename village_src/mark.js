@@ -3,8 +3,8 @@ function getMousePos(event) {
     return [e.clientX,e.clientY];
 }
 class mapMark{
-    constructor(coordinate, year, id){
-        this.id=id;
+    constructor(coordinate, year, scale){
+        this.scale=scale;
         this.pos=coordinate;
         this.year=year;
         this.markVectorSource = new ol.source.Vector();
