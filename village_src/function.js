@@ -80,11 +80,13 @@ for (i = 0; i < cdata.length; i++) {
     mark.addEvtClick(function (coordinate) {
         var pos = ol.proj.transform(coordinate, 'EPSG:3857', 'EPSG:4326');
         console.log(pos);
-        var distance = 9e-28;
+        var distance = 1e-27;
         var min_index = 0;
         for (j = 0; j < markbox.length; j++) {
             dx = markbox[j].pos[0] - pos[0];
             dy = markbox[j].pos[1] - pos[1];
+
+            if (dx < -distance || dx > distance || dy < -distance || dy > -distance) continue;
             if (getdp(markbox[j].pos, pos) < distance) {
                 min_index = j;
                 break;
