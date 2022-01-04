@@ -143,12 +143,12 @@ for (i = 0; i < cdata.length; i++) {
                     dx = dx < 0 ? -dx : dx;
                     dy = dy < 0 ? -dy : dy;
 
-                    if (dx > 0.01 || dy > 0.01) {
+                    if (dx > 0.005 || dy > 0.005) {
                         continue;
                     }
                     // console.log(dx, dy);
                     var d = getdp(dx, dy);
-                    if (d < 0.00005) {
+                    if (d < 0.000025) {
                         $("#popup-content").html(cdata[j][1] + "（" + cdata[j][3] + "）");
                         break;
                     }
