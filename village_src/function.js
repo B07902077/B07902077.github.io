@@ -94,7 +94,6 @@ for (i = 0; i < cdata.length; i++) {
                 break;
             }
         }
-        console.log(distance);
 
         $('#villageNo').html(cdata[min_index][0]);
         $('#villageName').html(cdata[min_index][1]);
