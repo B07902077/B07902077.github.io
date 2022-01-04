@@ -80,7 +80,7 @@ for (i = 0; i < cdata.length; i++) {
     mark.addEvtClick(function (coordinate) {
         var pos = ol.proj.transform(coordinate, 'EPSG:3857', 'EPSG:4326');
         console.log(pos);
-        var distance2 = 1e-27;
+        var distance2 = 9e-28;
         var distance1 = 3e-14;
         var min_index = 0;
         for (j = 0; j < markbox.length; j++) {
