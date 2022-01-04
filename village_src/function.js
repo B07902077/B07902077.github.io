@@ -87,6 +87,8 @@ for (i = 0; i < cdata.length; i++) {
                 min_index = j;
             }
         }
+        console.log(distance);
+        
         $('#villageNo').html(cdata[min_index][0]);
         $('#villageName').html(cdata[min_index][1]);
         $('#villageTime').html(cdata[min_index][3]);
