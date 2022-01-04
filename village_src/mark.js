@@ -51,7 +51,7 @@ class mapMark{
                 var iconSelect = e.target;
                 var iconCollection = iconSelect.getFeatures();
                 var iconFeatures = iconCollection.getArray();
-                console.log("this.getId", iconFeatures[0].getId());
+                console.log("this.id", iconFeatures[0].id);
                 if(iconFeatures.length > 0){
                     callback(iconFeatures[0].getGeometry().getCoordinates());
                 }

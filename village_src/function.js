@@ -81,7 +81,6 @@ for (i = 0; i < cdata.length; i++) {
         var pos = ol.proj.transform(coordinate, 'EPSG:3857', 'EPSG:4326');
         var distance = 1;
         var min_index = 0;
-        console.log("id:", id);
         for (j = 0; j < markbox.length; j++) {
             if (getdp(markbox[j].pos, pos) < distance) {
                 distance = getdp(markbox[j].pos, pos);
