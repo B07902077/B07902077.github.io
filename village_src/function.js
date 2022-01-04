@@ -144,8 +144,8 @@ for (i = 0; i < cdata.length; i++) {
                     dx = dx < 0 ? -dx : dx;
                     dy = dy < 0 ? -dy : dy;
 
-                    var d = getdp(dx, dy);
-                    if (d < mind) {
+                    // var d = getdp(dx, dy);
+                    if (dx < mind && dy < mind) {
                         $("#popup-content").html(cdata[j][1] + "（" + cdata[j][3] + "）");
                         break;
                     }
