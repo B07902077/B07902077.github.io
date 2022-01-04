@@ -130,7 +130,7 @@ for (i = 0; i < cdata.length; i++) {
                     element: container,
                     autoPan: true,
                     autoPanAnimation: {
-                        duration: 150
+                        duration: 100
                     },
                     offset: [1, -1]
                 }));
