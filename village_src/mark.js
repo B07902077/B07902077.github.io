@@ -4,7 +4,7 @@ function getMousePos(event) {
 }
 class mapMark{
     constructor(coordinate, year, id){
-        this.id_=id;
+        this.id=id;
         this.pos=coordinate;
         this.year=year;
         this.markVectorSource = new ol.source.Vector();
