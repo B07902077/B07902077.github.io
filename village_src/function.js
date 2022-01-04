@@ -17,7 +17,7 @@ var data = readget.split('\n');
 // console.log('data: ', data);
 var cdata = [];
 var checkArray = [];
-console.log("edit0104-1")
+console.log("edit0104-2")
 for (i = 0; i < data.length; i++) {
     c = data[i].split('\t');
 
@@ -80,13 +80,15 @@ for (i = 0; i < cdata.length; i++) {
     mark.addEvtClick(function (coordinate) {
         var pos = ol.proj.transform(coordinate, 'EPSG:3857', 'EPSG:4326');
         console.log(pos);
-        var distance = 1e-26;
+        var distance = 1e-27;
+        var distance1 = 3e-14;
         var min_index = 0;
         for (j = 0; j < markbox.length; j++) {
             dx = markbox[j].pos[0] - pos[0];
             dy = markbox[j].pos[1] - pos[1];
-
-            if (dx < -distance || dx > distance || dy < -distance || dy > -distance) continue;
+            dx = dx < 0? -dx : dx;
+            dy = dy < 0? -dy : dy;
+            if (dx > distance1 || dy > -distance1) continue;
             if (getdp(markbox[j].pos, pos) < distance) {
                 min_index = j;
                 break;
