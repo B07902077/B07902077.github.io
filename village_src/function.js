@@ -137,7 +137,7 @@ for (i = 0; i < cdata.length; i++) {
                 map.addOverlay(popOverlay);
                 var hdms = ol.coordinate.toStringHDMS(ol.proj.transform(coordinate, 'EPSG:3857', 'EPSG:4326'));
                 var pos = ol.proj.transform(coordinate, 'EPSG:3857', 'EPSG:4326');
-                var mind = 10000;
+                var mind = 0.0001;
                 for (j = 0; j < markbox.length; j++) {
                     var d = getdp(markbox[j].pos, pos);
                     if (d < mind) {
