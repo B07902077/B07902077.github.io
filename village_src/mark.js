@@ -3,8 +3,8 @@ function getMousePos(event) {
     return [e.clientX,e.clientY];
 }
 class mapMark{
-    constructor(coordinate,year,id){
-        this.id=id;
+    constructor(coordinate, year, id){
+        this.id_=id;
         this.pos=coordinate;
         this.year=year;
         this.markVectorSource = new ol.source.Vector();
@@ -29,7 +29,8 @@ class mapMark{
         this.iconFeature.setStyle(iconStyle);
         this.markVectorSource.addFeature(this.iconFeature);
         this.markVectorSource.addFeature(new ol.Feature({
-            geometry:new ol.geom.Circle(ol.proj.fromLonLat(this.pos),100)}));
+            geometry:new ol.geom.Circle(ol.proj.fromLonLat(this.pos),100)
+        }));
         map.removeLayer(this.markVectorLayer);
         map.addLayer(this.markVectorLayer);
         this.shown=1;
@@ -40,6 +41,7 @@ class mapMark{
         this.shown=0;
     }
     addEvtClick(callback){
+        console.log("this.getId", iconFeatures[0].getId());
         var selectClick = new ol.interaction.Select({
             condition: ol.events.condition.click
         });
@@ -49,6 +51,7 @@ class mapMark{
                 var iconSelect = e.target;
                 var iconCollection = iconSelect.getFeatures();
                 var iconFeatures = iconCollection.getArray();
+                console.log()
                 if(iconFeatures.length > 0){
                     callback(iconFeatures[0].getGeometry().getCoordinates());
                 }
