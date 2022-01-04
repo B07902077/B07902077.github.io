@@ -17,7 +17,7 @@ var data = readget.split('\n');
 // console.log('data: ', data);
 var cdata = [];
 var checkArray = [];
-console.log("edit0104-3")
+console.log("edit0104-2")
 for (i = 0; i < data.length; i++) {
     c = data[i].split('\t');
 
@@ -30,7 +30,7 @@ for (i = 0; i < data.length; i++) {
 
 var markbox = [];
 function getdp(p1, p2) {
-    return Math.pow(p1, 2) + Math.pow(p2, 2)
+    return Math.pow(p1[0] - p2[0], 2) + Math.pow(p1[1] - p2[1], 2)
 }
 
 function showVal(newVal) {
@@ -86,11 +86,11 @@ for (i = 0; i < cdata.length; i++) {
         for (j = 0; j < markbox.length; j++) {
             dx = markbox[j].pos[0] - pos[0];
             dy = markbox[j].pos[1] - pos[1];
-            dx = dx < 0 ? -dx : dx;
-            dy = dy < 0 ? -dy : dy;
+            dx = dx < 0? -dx : dx;
+            dy = dy < 0? -dy : dy;
 
             if (dx > distance1 || dy > distance1) continue;
-            if (getdp(dx, dy) < distance2) {
+            if (getdp(markbox[j].pos, pos) < distance2) {
                 min_index = j;
                 break;
             }
@@ -135,33 +135,17 @@ for (i = 0; i < cdata.length; i++) {
                     offset: [10, -20]
                 }));
                 map.addOverlay(popOverlay);
+                var hdms = ol.coordinate.toStringHDMS(ol.proj.transform(coordinate, 'EPSG:3857', 'EPSG:4326'));
                 var pos = ol.proj.transform(coordinate, 'EPSG:3857', 'EPSG:4326');
-                var mind = 3e-14;
-
-
-                var distance2 = 1;
-                var distance1 = 1e-10;
+                var mind = 10000;
                 for (j = 0; j < markbox.length; j++) {
-                    dx = markbox[j].pos[0] - pos[0];
-                    dy = markbox[j].pos[1] - pos[1];
-                    dx = dx < 0 ? -dx : dx;
-                    dy = dy < 0 ? -dy : dy;
-                    if (dx > distance1 || dy > distance1){
-                        continue;
-                    }
-
-                    var d = getdp(dx, dy);
-                    if (d > distance2) {
-                        continue;
-                    }
-                    else {
+                    var d = getdp(markbox[j].pos, pos);
+                    if (d < mind) {
                         $("#popup-content").html(cdata[j][1] + "（" + cdata[j][3] + "）");
                         mind = d;
-                        break;
                     }
                 }
                 console.log(mind)
-
                 popOverlay.setPosition(coordinate);
                 closer.onclick = function () {
                     popOverlay.setPosition(undefined);
