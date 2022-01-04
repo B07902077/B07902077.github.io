@@ -17,7 +17,7 @@ var data = readget.split('\n');
 // console.log('data: ', data);
 var cdata = [];
 var checkArray = [];
-console.log("edit0104-1")
+console.log("edit0104-2")
 for (i = 0; i < data.length; i++) {
     c = data[i].split('\t');
 
@@ -144,9 +144,9 @@ for (i = 0; i < cdata.length; i++) {
                     dx = dx < 0 ? -dx : dx;
                     dy = dy < 0 ? -dy : dy;
 
-                    if (dx > 1e-7 && dy > 1e-7) {
-                        continue;
-                    }
+                    // if (dx > 1e-7 && dy > 1e-7) {
+                    //    continue;
+                    //}
                     console.log(dx, dy);
                     var d = getdp(dx, dy);
                     if (d < mind) {
