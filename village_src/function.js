@@ -130,7 +130,7 @@ for (i = 0; i < cdata.length; i++) {
                     element: container,
                     autoPan: true,
                     autoPanAnimation: {
-                        duration: 250
+                        duration: 150
                     },
                     offset: [10, -20]
                 }));
@@ -148,7 +148,7 @@ for (i = 0; i < cdata.length; i++) {
                     }
                     // console.log(dx, dy);
                     var d = getdp(dx, dy);
-                    if (d < 0.0001) {
+                    if (d < 0.00005) {
                         $("#popup-content").html(cdata[j][1] + "（" + cdata[j][3] + "）");
                         break;
                     }
