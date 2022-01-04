@@ -141,32 +141,29 @@ for (i = 0; i < cdata.length; i++) {
 
                 var distance2 = 1e-27;
                 var distance1 = 3e-14;
-                var min_index = 0;
                 for (j = 0; j < markbox.length; j++) {
                     dx = markbox[j].pos[0] - pos[0];
                     dy = markbox[j].pos[1] - pos[1];
                     dx = dx < 0 ? -dx : dx;
                     dy = dy < 0 ? -dy : dy;
-
-                    if (dx > distance1 || dy > distance1 || getdp(dx, dy) > distance2){
+                    if (dx > distance1 || dy > distance1){
                         $("#popup-content").html("");
+                        continue;
+                    }
+
+                    var d = getdp(dx, dy);
+                    if (d > distance2) {
+                        $("#popup-content").html("");
+                        continue;
                     }
                     else {
                         $("#popup-content").html(cdata[j][1] + "（" + cdata[j][3] + "）");
-                        min_index = j;
+                        mind = d;
                         break;
                     }
                 }
-
-
-                for (j = 0; j < markbox.length; j++) {
-                    var d = getdp(markbox[j].pos, pos);
-                    if (d < mind) {
-                        $("#popup-content").html(cdata[j][1] + "（" + cdata[j][3] + "）");
-                        mind = d;
-                    }
-                }
                 console.log(mind)
+
                 popOverlay.setPosition(coordinate);
                 closer.onclick = function () {
                     popOverlay.setPosition(undefined);
