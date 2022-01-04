@@ -46,7 +46,7 @@ function showVal(type, newVal) {
                 markbox[i].create();
         }
     } else if (type === 0) {
-        document.getElementById("valBox").innerHTML = "時間：至 " + newVal;
+        document.getElementById("valBox").innerHTML = "時間：至 " + newVal + " 年";
         for (i = 0; i < markbox.length; i++) {
             if (markbox[i].year > newVal && markbox[i].shown == 1) {
                 markbox[i].delete();
