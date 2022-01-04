@@ -80,7 +80,7 @@ for (i = 0; i < cdata.length; i++) {
     mark.addEvtClick(function (coordinate) {
         var pos = ol.proj.transform(coordinate, 'EPSG:3857', 'EPSG:4326');
         console.log(pos);
-        var distance2 = 0.000025;
+        var distance2 = 0.0005;
         var distance1 = 0.001;
         var min_index = 0;
         for (j = 0; j < markbox.length; j++) {
@@ -137,7 +137,8 @@ for (i = 0; i < cdata.length; i++) {
                 }));
                 map.addOverlay(popOverlay);
                 var pos = ol.proj.transform(coordinate, 'EPSG:3857', 'EPSG:4326');
-                var distance = 0.000025;
+                var distance = 0.0005;
+                var minid;
                 for (j = 0; j < markbox.length; j++) {
                     var dx = markbox[j].pos[0] - pos[0];
                     var dy = markbox[j].pos[1] - pos[1];
@@ -150,11 +151,11 @@ for (i = 0; i < cdata.length; i++) {
                     // console.log(dx, dy);
                     var d = getdp(dx, dy);
                     if (d < distance) {
-                        $("#popup-content").html(cdata[j][1] + "（" + cdata[j][3] + "）");
+                        minid = j;
                         distance = d;
                     }
                 }
-
+                $("#popup-content").html(cdata[minid][1] + "（" + cdata[minid][3] + "）");
                 popOverlay.setPosition(coordinate);
                 closer.onclick = function () {
                     popOverlay.setPosition(undefined);
