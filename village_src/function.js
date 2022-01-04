@@ -147,13 +147,11 @@ for (i = 0; i < cdata.length; i++) {
                     dx = dx < 0 ? -dx : dx;
                     dy = dy < 0 ? -dy : dy;
                     if (dx > distance1 || dy > distance1){
-                        $("#popup-content").html("");
                         continue;
                     }
 
                     var d = getdp(dx, dy);
                     if (d > distance2) {
-                        $("#popup-content").html("");
                         continue;
                     }
                     else {
