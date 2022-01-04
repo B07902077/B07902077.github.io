@@ -29,8 +29,8 @@ for (i = 0; i < data.length; i++) {
 // console.log('checkArray: ', checkArray);
 
 var markbox = [];
-function getdp(p1, p2) {
-    return Math.pow(Math.pow(p1[0] - p2[0], 2) + Math.pow(p1[1] - p2[1], 2), 1 / 2)
+function getdp(x, y) {
+    return Math.pow(p1[0] - p2[0], 2) + Math.pow(p1[1] - p2[1], 2)
 }
 
 function showVal(newVal) {
@@ -80,12 +80,15 @@ for (i = 0; i < cdata.length; i++) {
     mark.addEvtClick(function (coordinate) {
         var pos = ol.proj.transform(coordinate, 'EPSG:3857', 'EPSG:4326');
         console.log(pos);
-        var distance = 3e-14;
+        var distance = 9e-28;
         var min_index = 0;
         for (j = 0; j < markbox.length; j++) {
+            dx = markbox[j].pos[0] - pos[0];
+            dy = markbox[j].pos[1] - pos[1];
+            if()
             if (getdp(markbox[j].pos, pos) < distance) {
-                distance = getdp(markbox[j].pos, pos);
                 min_index = j;
+                break;
             }
         }
         console.log(distance);
@@ -131,7 +134,7 @@ for (i = 0; i < cdata.length; i++) {
                 map.addOverlay(popOverlay);
                 var hdms = ol.coordinate.toStringHDMS(ol.proj.transform(coordinate, 'EPSG:3857', 'EPSG:4326'));
                 var pos = ol.proj.transform(coordinate, 'EPSG:3857', 'EPSG:4326');
-                var mind = 100;
+                var mind = 10000;
                 for (j = 0; j < markbox.length; j++) {
                     var d = getdp(markbox[j].pos, pos);
                     if (d < mind) {
