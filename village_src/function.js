@@ -137,14 +137,14 @@ for (i = 0; i < cdata.length; i++) {
                 }));
                 map.addOverlay(popOverlay);
                 var pos = ol.proj.transform(coordinate, 'EPSG:3857', 'EPSG:4326');
-                var distance = 0.000025;
+                var distance = 0.000001;
                 for (j = 0; j < markbox.length; j++) {
                     var dx = markbox[j].pos[0] - pos[0];
                     var dy = markbox[j].pos[1] - pos[1];
                     dx = dx < 0 ? -dx : dx;
                     dy = dy < 0 ? -dy : dy;
 
-                    if (dx > 0.005 || dy > 0.005) {
+                    if (dx > 0.001 || dy > 0.001) {
                         continue;
                     }
                     // console.log(dx, dy);
