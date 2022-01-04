@@ -26,7 +26,7 @@ var classGotoMap = function (mapOptions) {
         target: mapSettiings.mapTarget,
         view: new ol.View({
             center: ol.proj.fromLonLat([121.1, 24.95]),
-            zoom: 11
+            zoom: 10.5
           })
     });
     map = themap;
