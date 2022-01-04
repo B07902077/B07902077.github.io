@@ -140,7 +140,7 @@ for (i = 0; i < cdata.length; i++) {
 
 
                 var distance2 = 1;
-                var distance1 = 3e-14;
+                var distance1 = 1e-10;
                 for (j = 0; j < markbox.length; j++) {
                     dx = markbox[j].pos[0] - pos[0];
                     dy = markbox[j].pos[1] - pos[1];
