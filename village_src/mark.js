@@ -23,7 +23,7 @@ class mapMark{
                 anchor:[0.5,0.5],
                 src: 'village_src/icon.png',
                 img: undefined,
-                scale: 0.05
+                scale: 0.03
             }))
         });
         this.iconFeature.setStyle(iconStyle);
