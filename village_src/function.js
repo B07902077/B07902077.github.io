@@ -137,16 +137,17 @@ for (i = 0; i < cdata.length; i++) {
                 map.addOverlay(popOverlay);
                 var hdms = ol.coordinate.toStringHDMS(ol.proj.transform(coordinate, 'EPSG:3857', 'EPSG:4326'));
                 var pos = ol.proj.transform(coordinate, 'EPSG:3857', 'EPSG:4326');
-                var mind = 10000;
+                var mind = 1e-6;
                 for (j = 0; j < markbox.length; j++) {
                     var d = getdp(markbox[j].pos, pos);
                     if (d < mind) {
                         $("#popup-content").html(cdata[j][1] + "（" + cdata[j][3] + "）");
                         mind = d;
+                        break;
                     }
                 }
                 console.log(mind)
-                
+
                 popOverlay.setPosition(coordinate);
                 closer.onclick = function () {
                     popOverlay.setPosition(undefined);
