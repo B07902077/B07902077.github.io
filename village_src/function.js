@@ -88,6 +88,7 @@ for (i = 0; i < cdata.length; i++) {
             dy = markbox[j].pos[1] - pos[1];
             dx = dx < 0? -dx : dx;
             dy = dy < 0? -dy : dy;
+
             if (dx > distance1 || dy > distance1) continue;
             if (getdp(markbox[j].pos, pos) < distance2) {
                 min_index = j;
@@ -144,6 +145,8 @@ for (i = 0; i < cdata.length; i++) {
                         mind = d;
                     }
                 }
+                console.log(mind)
+                
                 popOverlay.setPosition(coordinate);
                 closer.onclick = function () {
                     popOverlay.setPosition(undefined);
