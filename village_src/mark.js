@@ -41,7 +41,6 @@ class mapMark{
         this.shown=0;
     }
     addEvtClick(callback){
-        console.log("this.getId", iconFeatures[0].getId());
         var selectClick = new ol.interaction.Select({
             condition: ol.events.condition.click
         });
@@ -51,7 +50,7 @@ class mapMark{
                 var iconSelect = e.target;
                 var iconCollection = iconSelect.getFeatures();
                 var iconFeatures = iconCollection.getArray();
-                console.log()
+                console.log("this.getId", iconFeatures[0].getId());
                 if(iconFeatures.length > 0){
                     callback(iconFeatures[0].getGeometry().getCoordinates());
                 }
