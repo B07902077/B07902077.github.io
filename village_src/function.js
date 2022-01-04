@@ -85,7 +85,6 @@ for (i = 0; i < cdata.length; i++) {
         for (j = 0; j < markbox.length; j++) {
             dx = markbox[j].pos[0] - pos[0];
             dy = markbox[j].pos[1] - pos[1];
-            if()
             if (getdp(markbox[j].pos, pos) < distance) {
                 min_index = j;
                 break;
