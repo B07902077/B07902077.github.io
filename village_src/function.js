@@ -78,7 +78,9 @@ for (i = 0; i < cdata.length; i++) {
     var pos = [parseFloat(cdata[i][7]), parseFloat(cdata[i][6])]; //經緯度
     var mark = new mapMark(pos, parseInt(cdata[i][3]), data[i][0]); //年代
     mark.addEvtClick(function (coordinate) {
+        console.log(coordinate);
         var pos = ol.proj.transform(coordinate, 'EPSG:3857', 'EPSG:4326');
+        console.log(pos);
         var distance = 1;
         var min_index = 0;
         for (j = 0; j < markbox.length; j++) {
@@ -88,7 +90,7 @@ for (i = 0; i < cdata.length; i++) {
             }
         }
         console.log(distance);
-        
+
         $('#villageNo').html(cdata[min_index][0]);
         $('#villageName').html(cdata[min_index][1]);
         $('#villageTime').html(cdata[min_index][3]);
