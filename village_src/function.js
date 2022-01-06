@@ -34,7 +34,7 @@ function getdp(p1, p2) {
 }
 
 function showVal(type, newVal) {
-    var newYearVal = document.getElementById("exslider").val();
+    var newYearVal = document.getElementById("exslider");
     console.log(newYearVal);
     if (document.getElementById("flexCheckDefault").checked && type === 0) {
         var com = parseInt(newVal) + parseInt($("#inputyear").val());
