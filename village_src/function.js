@@ -246,7 +246,7 @@ $("#DataSearch").change(function () {
     checkArray = check;
     console.log('check: ', check);
     console.log('checkArray: ', checkArray);
-    showVal(0, $("#exslider").val());
+    showVal();
 });
 
 function clearSearch() {
@@ -256,7 +256,7 @@ function clearSearch() {
     }
     checkArray = check;
     $("#DataSearch").val("");
-    showVal(0, $("#exslider").val());
+    showVal();
 }
 
 function dragElement(elmnt) {
