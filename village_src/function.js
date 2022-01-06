@@ -41,7 +41,7 @@ function showVal() {
     var lowerYearVal;
     var upperScaleVal;
     var lowerScaleVal;
-    if(document.getElementById("flexCheckDefault").checked) {
+    if (document.getElementById("flexCheckDefault").checked) {
         upperYearVal = parseInt(inputYearVal) + parseInt($("#inputyear").val());
         lowerYearVal = parseInt(inputYearVal);
         document.getElementById("valBox").innerHTML = "建立時間：" + lowerYearVal + "~" + upperYearVal;
@@ -51,7 +51,7 @@ function showVal() {
         lowerYearVal = 1940;
         document.getElementById("valBox").innerHTML = "建立時間：至 " + upperYearVal + " 年";
     }
-    if(document.getElementById("flexCheckDefault2").checked) {
+    if (document.getElementById("flexCheckDefault2").checked) {
         upperScaleVal = parseInt(inputScaleVal) + parseInt($("#inputscale").val());
         lowerScaleVal = parseInt(inputScaleVal);
         document.getElementById("valBox2").innerHTML = "眷村規模：" + lowerScaleVal + "~" + upperScaleVal;
@@ -63,14 +63,14 @@ function showVal() {
     }
 
     for (i = 0; i < markbox.length; i++) {
-        if ((markbox[i].year > upperYearVal || markbox[i].year < lowerYearVal || 
-            markbox[i].scale > upperScaleVal || markbox[i].scale < lowerScaleVal) 
+        if ((markbox[i].year > upperYearVal || markbox[i].year < lowerYearVal ||
+            markbox[i].scale > upperScaleVal || markbox[i].scale < lowerScaleVal)
             && markbox[i].shown == 1)
             markbox[i].delete();
         else if (checkArray[i] == 0 && markbox[i].shown == 1)
             markbox[i].delete();
-        else if (markbox[i].year >= lowerYearVal && markbox[i].year <= upperYearVal 
-            && markbox[i].scale >= lowerScaleVal && markbox[i].scale <= upperScaleVal 
+        else if (markbox[i].year >= lowerYearVal && markbox[i].year <= upperYearVal
+            && markbox[i].scale >= lowerScaleVal && markbox[i].scale <= upperScaleVal
             && checkArray[i] == 1 && markbox[i].shown == 0)
             markbox[i].create();
     }
@@ -96,10 +96,8 @@ var bookkendata = "";
 var arrowtext = "";
 
 function fillHtmlContent(name, index1, index2) {
-    if (cdata[index1][index2] != ""){
+    if (cdata[index1][index2] != "--")
         $(name).html(cdata[index1][index2]);
-    }
-    return;
 }
 
 for (i = 0; i < cdata.length; i++) {
@@ -127,21 +125,22 @@ for (i = 0; i < cdata.length; i++) {
         }
 
         fillHtmlContent('#villageNo', min_index, 0);
-        // $('#villageNo').html(cdata[min_index][0]);
-        $('#villageName').html(cdata[min_index][1]);
-        $('#villageTime').html(cdata[min_index][3]);
-        $('#villageAddress').html(cdata[min_index][2]);
-        $('#villageType').html(cdata[min_index][4]);
-        $('#villageScale').html(cdata[min_index][5]);
-        $('#villageContent').html(cdata[min_index][8]);
-        $('#villageHistory').html(cdata[min_index][9]);
-        $('#villageSpecial').html(cdata[min_index][10]);
+        fillHtmlContent('#villageName', min_index, 1);
+        fillHtmlContent('#villageTime', min_index, 3);
+        fillHtmlContent('#villageAddress', min_index, 2);
+        fillHtmlContent('#villageType', min_index, 4);
+        fillHtmlContent('#villageScale', min_index, 5);
+        fillHtmlContent('#villageContent', min_index, 8);
+        fillHtmlContent('#villageHistory', min_index, 9);
+        fillHtmlContent('#villageSpecial', min_index, 10);
         $('#villageRefernce').children().remove();
         $('#villageRefernce').html("")
         for (j = 0; j < cdata[min_index][11].length; j++) {
-            if (j == 0) content = "<a href=\"" + cdata[min_index][12][j] + "\">" + cdata[min_index][11][j] + "</a>";
-            else content = "、<a href=\"" + cdata[min_index][12][j] + "\">" + cdata[min_index][11][j] + "</a>";
-            $('#villageRefernce').append(content);
+            if (cdata[min_index][11][j] != "--") {
+                if (j == 0) content = "<a href=\"" + cdata[min_index][12][j] + "\">" + cdata[min_index][11][j] + "</a>";
+                else content = "、<a href=\"" + cdata[min_index][12][j] + "\">" + cdata[min_index][11][j] + "</a>";
+                $('#villageRefernce').append(content);
+            }
         }
         $("#staticBackdropLabel").html(cdata[min_index][1] + "（" + cdata[min_index][3] + "）");
         $("#launch").click();
@@ -211,23 +210,25 @@ $("#exampleDataList").change(function () {
         else {
             if (cdata[i][1] == $("#exampleDataList").val()) {
                 map.getView().animate({ center: ol.proj.fromLonLat([parseFloat(cdata[i][7]), parseFloat(cdata[i][6])]), zoom: 14, duration: 2000 });
-                $('#villageNo').html(cdata[i][0]);
-                $('#villageName').html(cdata[i][1]);
-                $('#villageTime').html(cdata[i][3]);
-                $('#villageAddress').html(cdata[i][2]);
-                $('#villageType').html(cdata[i][4]);
-                $('#villageScale').html(cdata[i][5]);
-                $('#villageContent').html(cdata[i][8]);
-                $('#villageHistory').html(cdata[i][9]);
-                $('#villageSpecial').html(cdata[i][10]);
-                // console.log(cdata[i][1]);
-                // console.log(cdata[i][11].length);
+
+                fillHtmlContent('#villageNo', i, 0);
+                fillHtmlContent('#villageName', i, 1);
+                fillHtmlContent('#villageTime', i, 3);
+                fillHtmlContent('#villageAddress', i, 2);
+                fillHtmlContent('#villageType', i, 4);
+                fillHtmlContent('#villageScale', i, 5);
+                fillHtmlContent('#villageContent', i, 8);
+                fillHtmlContent('#villageHistory', i, 9);
+                fillHtmlContent('#villageSpecial', i, 10);
+
                 $('#villageRefernce').children().remove();
                 $('#villageRefernce').html("")
                 for (j = 0; j < cdata[i][11].length; j++) {
-                    if (j == 0) content = "<a href=\"" + cdata[i][12][j] + "\">" + cdata[i][11][j] + "</a>";
-                    else content = "、<a href=\"" + cdata[i][12][j] + "\">" + cdata[i][11][j] + "</a>";
-                    $('#villageRefernce').append(content);
+                    if (cdata[i][11][j] != "--") {
+                        if (j == 0) content = "<a href=\"" + cdata[i][12][j] + "\">" + cdata[i][11][j] + "</a>";
+                        else content = "、<a href=\"" + cdata[i][12][j] + "\">" + cdata[i][11][j] + "</a>";
+                        $('#villageRefernce').append(content);
+                    }
                 }
                 $("#staticBackdropLabel").html(cdata[i][1] + "（" + cdata[i][3] + "）");
                 $("#launch").click();
