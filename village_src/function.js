@@ -34,6 +34,8 @@ function getdp(p1, p2) {
 }
 
 function showVal(type, newVal) {
+    var newYearVal = document.getElementById("exslider").val();
+    console.log(newYearVal);
     if (document.getElementById("flexCheckDefault").checked && type === 0) {
         var com = parseInt(newVal) + parseInt($("#inputyear").val());
         document.getElementById("valBox").innerHTML = "建立時間：" + newVal + "~" + com;
