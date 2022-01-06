@@ -98,10 +98,10 @@ var arrowtext = "";
 function fillHtmlContent(name, index1, index2) {
     if (cdata[index1][index2] != "--"){
         $(name).html(cdata[index1][index2]);
-        $('#'+index2).style.display = "block";
+        $('#'+index2).setAttribute('style', 'display:block');
     }
     else {
-        $('#'+index2).style.display = "none";
+        $('#'+index2).setAttribute('style', 'display:none');
     }
 }
 
@@ -145,9 +145,9 @@ for (i = 0; i < cdata.length; i++) {
                 if (j == 0) content = "<a href=\"" + cdata[min_index][12][j] + "\">" + cdata[min_index][11][j] + "</a>";
                 else content = "、<a href=\"" + cdata[min_index][12][j] + "\">" + cdata[min_index][11][j] + "</a>";
                 $('#villageRefernce').append(content);
-                $('#11').style.display = "block";
+                $('#11').setAttribute('style', 'display:block');
             }
-            else $('#11').style.display = "none";
+            else $('#11').setAttribute('style', 'display:none');
         }
         $("#staticBackdropLabel").html(cdata[min_index][1] + "（" + cdata[min_index][3] + "）");
         $("#launch").click();
