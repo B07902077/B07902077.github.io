@@ -96,13 +96,12 @@ var bookkendata = "";
 var arrowtext = "";
 
 function fillHtmlContent(name, index1, index2) {
-    var newId = '#' + index ;
     if (cdata[index1][index2] != "--"){
         $(name).html(cdata[index1][index2]);
-        $(newId).css('display', 'block');
+        $('#'+index2).css('display', 'block');
     }
     else {
-        $(newId).css('display', 'none');
+        $('#'+index2).css('display', 'none');
     }
 }
 
