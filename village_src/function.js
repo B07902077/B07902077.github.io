@@ -96,12 +96,13 @@ var bookkendata = "";
 var arrowtext = "";
 
 function fillHtmlContent(name, index1, index2) {
+    var newId = '#' + index ;
     if (cdata[index1][index2] != "--"){
         $(name).html(cdata[index1][index2]);
-        $('#'+index2).css('display', 'block');
+        $(newId).css('display', 'block');
     }
     else {
-        $('#'+index2).css('display', 'none');
+        $(newId).css('display', 'none');
     }
 }
 
@@ -234,8 +235,10 @@ $("#exampleDataList").change(function () {
                     if (cdata[i][11][j] != "--") {
                         if (j == 0) content = "<a href=\"" + cdata[i][12][j] + "\">" + cdata[i][11][j] + "</a>";
                         else content = "、<a href=\"" + cdata[i][12][j] + "\">" + cdata[i][11][j] + "</a>";
+                        $('#11').css('display', 'block');
                         $('#villageRefernce').append(content);
                     }
+                    else $('#11').css('display', 'none');
                 }
                 $("#staticBackdropLabel").html(cdata[i][1] + "（" + cdata[i][3] + "）");
                 $("#launch").click();
