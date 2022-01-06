@@ -17,7 +17,7 @@ var data = readget.split('\n');
 // console.log('data: ', data);
 var cdata = [];
 var checkArray = [];
-console.log("edit0106")
+console.log("edit0106-1")
 for (i = 0; i < data.length; i++) {
     c = data[i].split('\t');
 
@@ -212,8 +212,8 @@ $("#exampleDataList").change(function () {
                 $('#villageContent').html(cdata[i][8]);
                 $('#villageHistory').html(cdata[i][9]);
                 $('#villageSpecial').html(cdata[i][10]);
-                console.log(cdata[i][1]);
-                console.log(cdata[i][11].length);
+                // console.log(cdata[i][1]);
+                // console.log(cdata[i][11].length);
                 $('#villageRefernce').children().remove();
                 $('#villageRefernce').html("")
                 for (j = 0; j < cdata[i][11].length; j++) {
@@ -244,8 +244,8 @@ $("#DataSearch").change(function () {
         else check.push(0);
     }
     checkArray = check;
-    console.log('check: ', check);
-    console.log('checkArray: ', checkArray);
+    // console.log('check: ', check);
+    // console.log('checkArray: ', checkArray);
     showVal();
 });
 
