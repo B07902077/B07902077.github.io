@@ -81,7 +81,7 @@
   <div id="operation" style="position:absolute; left:6vw; top:35vh;">
     <span id="valBox" style="color: black; width:200px; font-size:3vh;">時間：至 1992 年</span>
     <input type="range" min="1940" id="exslider" max="2000" value="1992" step="1" style="width:30vh; height:2vh;"
-      oninput="showVal(0, this.value)">
+      oninput="showVal()">
     <div class="form-check">
       <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" style="width:3.5vh; height:3.5vh;">
       <label class="form-check-label" for="flexCheckDefault" style="color: black; font-size:3vh;">
@@ -95,7 +95,15 @@
   <div id="operation2" style="position:absolute; left:6vw; top:50vh;">
     <div id="valBox2" style="color: black; width:200px; font-size:3vh;">規模：小於 800 戶</div>
     <input type="range" min="0" id="exslider2" max="900" value="800" step="1" style="width:30vh; height:2vh;"
-      oninput="showVal(1, this.value)">
+      oninput="showVal()">
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault2" style="width:3.5vh; height:3.5vh;">
+      <label class="form-check-label" for="flexCheckDefault" style="color: black; font-size:3vh;">
+        &ensp;範圍：
+      </label>
+    </div>
+    <input type="number" name="points" id="inputscale" min="0" value="10"
+      style="width:5vw;height:3vh;position:relative;left:14vh;top:-4vh;">
   </div>
 
   <h1 id="mainTitle" style="position:absolute; left:6vw; top:7vh">臺灣北部眷村地圖</h1>
@@ -104,7 +112,8 @@
     style="border-style: dashed; border-color: black; position:absolute;left:6vw;top:17.5vh;">
   <input class="form-control" id="DataSearch" placeholder="搜尋全文"
     style="border-style: dashed; border-color: black; position:absolute;left:6vw;top:25.5vh;">
-  <button type="button" id="DataSearchClear" style="position:absolute;left:25vw;top:26vh;" onclick="clearSearch()">重新查詢</button>
+  <button type="button" id="DataSearchClear" style="position:absolute;left:25vw;top:26vh;"
+    onclick="clearSearch()">重新查詢</button>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
     crossorigin="anonymous"></script>

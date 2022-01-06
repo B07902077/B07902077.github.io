@@ -33,9 +33,49 @@ function getdp(p1, p2) {
     return Math.pow(p1, 2) + Math.pow(p2, 2)
 }
 
-function showVal(type, newVal) {
-    var newYearVal = document.getElementById("exslider").value;
-    console.log(newYearVal);
+function showVal() {
+    var inputYearVal = document.getElementById("exslider").value;
+    var inputScaleVal = document.getElementById("exslider2").value;
+
+    var upperYearVal;
+    var lowerYearVal;
+    var upperScaleVal;
+    var lowerScaleVal;
+    if(document.getElementById("flexCheckDefault").checked) {
+        upperYearVal = parseInt(inputYearVal) + parseInt($("#inputyear").val());
+        lowerYearVal = parseInt(inputYearVal);
+        document.getElementById("valBox").innerHTML = "建立時間：" + lowerYearVal + "~" + upperYearVal;
+    }
+    else {
+        upperYearVal = parseInt(inputYearVal);
+        lowerYearVal = 1940;
+        document.getElementById("valBox").innerHTML = "時間：至 " + upperYearVal + " 年";
+    }
+    if(document.getElementById("flexCheckDefault2").checked) {
+        upperScaleVal = parseInt(inputScaleVal) + parseInt($("#inputscale").val());
+        lowerScaleVal = parseInt(inputScaleVal);
+        document.getElementById("valBox2").innerHTML = "眷村規模：" + lowerScaleVal + "~" + upperScaleVal;
+    }
+    else {
+        upperScaleVal = parseInt(inputScaleVal);
+        lowerScaleVal = 0;
+        document.getElementById("valBox2").innerHTML = "規模：小於 " + upperScaleVal + " 戶";
+    }
+
+    for (i = 0; i < markbox.length; i++) {
+        if ((markbox[i].year > upperYearVal || markbox[i].year < lowerYearVal || 
+            markbox[i].scale > upperScaleVal || markbox[i].scale < lowerScaleVal) 
+            && markbox[i].shown == 1)
+            markbox[i].delete();
+        else if (checkArray[i] == 0 && markbox[i].shown == 1)
+            markbox[i].delete();
+        else if (markbox[i].year >= lowerYearVal && markbox[i].year <= upperYearVal 
+            && markbox[i].scale >= lowerScaleVal && markbox[i].scale <= upperScaleVal 
+            && checkArray[i] == 1 && markbox[i].shown == 0)
+            markbox[i].create();
+    }
+
+    /*
     if (document.getElementById("flexCheckDefault").checked && type === 0) {
         var com = parseInt(newVal) + parseInt($("#inputyear").val());
         document.getElementById("valBox").innerHTML = "建立時間：" + newVal + "~" + com;
@@ -74,14 +114,22 @@ function showVal(type, newVal) {
             }
         }
     }
-
+    */
 }
+
 $('#flexCheckDefault').change(function () {
-    showVal(0, $("#exslider").val())
+    showVal();
 });
 $("#inputyear").on('input', function () {
-    showVal(0, $("#exslider").val())
+    showVal();
 });
+$('#flexCheckDefault2').change(function () {
+    showVal();
+});
+$("#inputscale").on('input', function () {
+    showVal();
+});
+
 $("#launch").hide()
 var ken = '<datalist id="datalistOptions">';
 var namelist = ['', ''];
