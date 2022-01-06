@@ -49,7 +49,7 @@ function showVal() {
     else {
         upperYearVal = parseInt(inputYearVal);
         lowerYearVal = 1940;
-        document.getElementById("valBox").innerHTML = "時間：至 " + upperYearVal + " 年";
+        document.getElementById("valBox").innerHTML = "建立時間：至 " + upperYearVal + " 年";
     }
     if(document.getElementById("flexCheckDefault2").checked) {
         upperScaleVal = parseInt(inputScaleVal) + parseInt($("#inputscale").val());
@@ -59,7 +59,7 @@ function showVal() {
     else {
         upperScaleVal = parseInt(inputScaleVal);
         lowerScaleVal = 0;
-        document.getElementById("valBox2").innerHTML = "規模：小於 " + upperScaleVal + " 戶";
+        document.getElementById("valBox2").innerHTML = "眷村規模：小於 " + upperScaleVal + " 戶";
     }
 
     for (i = 0; i < markbox.length; i++) {
