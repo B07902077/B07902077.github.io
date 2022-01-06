@@ -95,6 +95,13 @@ var namelist = ['', ''];
 var bookkendata = "";
 var arrowtext = "";
 
+function fillHtmlContent(name, index1, index2) {
+    if (cdata[index1][index2] != ""){
+        $(name).html(cdata[index1][index2]);
+    }
+    return;
+}
+
 for (i = 0; i < cdata.length; i++) {
     ken += '\n<option id="searchinput' + i + '" value="' + cdata[i][1] + '">'; //名稱
     var position = [parseFloat(cdata[i][7]), parseFloat(cdata[i][6])]; //經緯度
@@ -119,7 +126,8 @@ for (i = 0; i < cdata.length; i++) {
             }
         }
 
-        $('#villageNo').html(cdata[min_index][0]);
+        fillHtmlContent('#villageNo', min_index, 0);
+        // $('#villageNo').html(cdata[min_index][0]);
         $('#villageName').html(cdata[min_index][1]);
         $('#villageTime').html(cdata[min_index][3]);
         $('#villageAddress').html(cdata[min_index][2]);
