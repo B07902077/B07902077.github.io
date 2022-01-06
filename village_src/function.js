@@ -17,7 +17,7 @@ var data = readget.split('\n');
 // console.log('data: ', data);
 var cdata = [];
 var checkArray = [];
-console.log("edit0106-1")
+console.log("edit0107")
 for (i = 0; i < data.length; i++) {
     c = data[i].split('\t');
 
