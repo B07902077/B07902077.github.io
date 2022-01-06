@@ -74,47 +74,6 @@ function showVal() {
             && checkArray[i] == 1 && markbox[i].shown == 0)
             markbox[i].create();
     }
-
-    /*
-    if (document.getElementById("flexCheckDefault").checked && type === 0) {
-        var com = parseInt(newVal) + parseInt($("#inputyear").val());
-        document.getElementById("valBox").innerHTML = "建立時間：" + newVal + "~" + com;
-        for (i = 0; i < markbox.length; i++) {
-            if ((markbox[i].year > com || markbox[i].year < newVal) && markbox[i].shown == 1)
-                markbox[i].delete();
-            else if (checkArray[i] == 0 && markbox[i].shown == 1)
-                markbox[i].delete();
-            else if (markbox[i].year >= newVal && markbox[i].year <= com && checkArray[i] == 1 && markbox[i].shown == 0)
-                markbox[i].create();
-        }
-    } else if (type === 0) {
-        document.getElementById("valBox").innerHTML = "時間：至 " + newVal + " 年";
-        for (i = 0; i < markbox.length; i++) {
-            if (markbox[i].year > newVal && markbox[i].shown == 1) {
-                markbox[i].delete();
-            }
-            else if (checkArray[i] == 0 && markbox[i].shown == 1) {
-                markbox[i].delete();
-            }
-            else if (markbox[i].year <= newVal && checkArray[i] == 1 && markbox[i].shown == 0) {
-                markbox[i].create();
-            }
-        }
-    } else if (type === 1) {
-        document.getElementById("valBox2").innerHTML = "規模：小於 " + newVal + " 戶";
-        for (i = 0; i < markbox.length; i++) {
-            if (markbox[i].scale >= newVal && markbox[i].shown == 1) {
-                markbox[i].delete();
-            }
-            else if (checkArray[i] == 0 && markbox[i].shown == 1) {
-                markbox[i].delete();
-            }
-            else if (markbox[i].scale < newVal && checkArray[i] == 1 && markbox[i].shown == 0) {
-                markbox[i].create();
-            }
-        }
-    }
-    */
 }
 
 $('#flexCheckDefault').change(function () {
