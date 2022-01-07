@@ -12,7 +12,7 @@ function readTextFile(file) {
     }
     rawFile.send(null);
 }
-readTextFile("village_src/village.txt")
+readTextFile("src/village.txt")
 var data = readget.split('\n');
 var cdata = [];
 var checkArray = [];
