@@ -30,9 +30,6 @@ class mapMark{
         });
         this.iconFeature.setStyle(iconStyle);
         markVectorSource.addFeature(this.iconFeature);
-        //markVectorSource.addFeature(new ol.Feature({
-        //    geometry:new ol.geom.Circle(ol.proj.fromLonLat(this.pos),100)
-        //}));
         map.removeLayer(markVectorLayer);
         map.addLayer(markVectorLayer);
         this.shown=1;

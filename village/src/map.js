@@ -17,6 +17,7 @@ var classGotoMap = function (mapOptions) {
             source: accessibleSource
         })
     ];
+    console.log(accessibleLayers);
     var accessibleView = new ol.View({
         center: mapSettiings.mapCenter,
         zoom: mapSettiings.mapZoom
