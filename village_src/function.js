@@ -14,7 +14,6 @@ function readTextFile(file) {
 }
 readTextFile("village_src/village.txt")
 var data = readget.split('\n');
-// console.log('data: ', data);
 var cdata = [];
 var checkArray = [];
 console.log("edit0107-1")
