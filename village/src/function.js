@@ -207,7 +207,6 @@ for (i = 0; i < cdata.length; i++) {
 }
 
 dragElement(document.getElementById("operation"));
-dragElement(document.getElementById("operation2"));
 $("#exampleDataList").html(ken + '\n</datalist>')
 $("#exampleDataList").change(function () {
     for (i = 0; i < cdata.length + 1; i++) {
