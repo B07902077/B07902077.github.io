@@ -16,7 +16,7 @@ readTextFile("src/village.txt")
 var data = readget.split('\n');
 var cdata = [];
 var checkArray = [];
-console.log("edit0107-2")
+console.log("edit0107-3")
 for (i = 0; i < data.length; i++) {
     c = data[i].split('\t');
 
