@@ -2,17 +2,15 @@ function getMousePos(event) {
     var e = event || window.event;
     return [e.clientX,e.clientY];
 }
-
-let markVectorSource = new ol.source.Vector();
-let markVectorLayer = new ol.layer.Vector({
-    source: markVectorSource
-});
-
 class mapMark{
     constructor(coordinate, year, scale){
         this.scale=scale;
         this.pos=coordinate;
         this.year=year;
+        this.markVectorSource = new ol.source.Vector();
+        this.markVectorLayer = new ol.layer.Vector({
+            source: this.markVectorSource
+        });
         this.iconFeature = new ol.Feature({
             geometry: new ol.geom.Point(ol.proj.fromLonLat(coordinate)),
         });
@@ -29,18 +27,17 @@ class mapMark{
             }))
         });
         this.iconFeature.setStyle(iconStyle);
-        markVectorSource.addFeature(this.iconFeature);
-        //markVectorSource.addFeature(new ol.Feature({
-        //    geometry:new ol.geom.Circle(ol.proj.fromLonLat(this.pos),100)
-        //}));
-        map.removeLayer(markVectorLayer);
-        map.addLayer(markVectorLayer);
+        this.markVectorSource.addFeature(this.iconFeature);
+        this.markVectorSource.addFeature(new ol.Feature({
+            geometry:new ol.geom.Circle(ol.proj.fromLonLat(this.pos),100)
+        }));
+        map.removeLayer(this.markVectorLayer);
+        map.addLayer(this.markVectorLayer);
         this.shown=1;
     }
     delete(){
-        markVectorSource.removeFeature(this.iconFeature);
-        map.removeLayer(markVectorLayer);
-        map.addLayer(markVectorLayer);
+        this.markVectorSource.removeFeature(this.iconFeature);
+        map.removeLayer(this.markVectorLayer); 
         this.shown=0;
     }
     addEvtClick(callback){
