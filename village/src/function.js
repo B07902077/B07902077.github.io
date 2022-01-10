@@ -251,8 +251,6 @@ $("#DataSearch").change(function () {
     console.log('searchWord: ', searchWord);
 
     for (i = 0; i < cdata.length; i++) {
-        // console.log(cdata[i][4]);
-        // 目前只搜尋 cdata[i][4]]、cdata[i][5]，應再新增其他欄位的搜尋。
         if (cdata[i][1].includes(searchWord) || cdata[i][2].includes(searchWord) || cdata[i][4].includes(searchWord) ||
             cdata[i][8].includes(searchWord) || cdata[i][9].includes(searchWord) || cdata[i][10].includes(searchWord) || cdata[i][11].includes(searchWord)) {
             check.push(1);
@@ -260,8 +258,6 @@ $("#DataSearch").change(function () {
         else check.push(0);
     }
     checkArray = check;
-    // console.log('check: ', check);
-    // console.log('checkArray: ', checkArray);
     showVal();
 });
 
