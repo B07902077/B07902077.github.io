@@ -120,7 +120,7 @@ for (i = 0; i < cdata.length; i++) {
             dx = dx < 0 ? -dx : dx;
             dy = dy < 0 ? -dy : dy;
 
-            if (dx > distance1 || dy > distance1) continue;
+            if (dx > distance1 || dy > distance1  || markbox[j].shown === 0) continue;
             var d = getdp(dx, dy);
             if (d < distance2) {
                 min_index = j;
@@ -180,7 +180,7 @@ for (i = 0; i < cdata.length; i++) {
                     dx = dx < 0 ? -dx : dx;
                     dy = dy < 0 ? -dy : dy;
 
-                    if (dx > 0.01 || dy > 0.01) {
+                    if (dx > 0.01 || dy > 0.01 || markbox[j].shown === 0) {
                         continue;
                     }
                     // console.log(dx, dy);
