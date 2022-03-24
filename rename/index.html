@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>File Renaming Tool</title>
+  <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+  <style type="text/css">
+    #download {
+      background-color: #2874A6;
+      color: white;
+      padding: 1vh 1vw;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+    }
+    #download:hover {
+      background-color: #21618C;
+    }
+  </style>
+</head>
+
+<body style="background-color: #EAEDED ; margin: 0; font-family: Sans-serif; font-size: 20px;">
+  <div id="header" style="background-color: #1F618D;">
+    <div style="font-size: 4vh; color: aliceblue; font-weight: bold;
+      padding-left: 2vw; padding-top: 3vh; padding-bottom: 3vh;">File Renaming Tool
+      for HSC (2022/03/18)</div>
+  </div>
+  <div id="wrapper" style="margin-left: 2vw; margin-top: 3vh; ">
+    <div>建議使用 Chrome 瀏覽器。</div><br />
+    <div style="margin-bottom: 2vh">
+      <div style="margin-bottom: 1vh">上傳欲改名的 pdf 檔案 (請在下方列表確認有「依序」上傳)：</div>
+      <input type="file" id="input" multiple="multiple" accept=".pdf">
+    </div>
+    <div style="margin-bottom: 3vh">
+      <div style="margin-bottom: 1vh">上傳 csv 檔案 (請確認 csv 檔案中有包含「報名編號」及「中文姓名」欄位)：
+      </div>
+      <input type="file" id="csvInput" accept=".csv">
+      <a href="https://officeguide.cc/excel-export-csv-file-tutorial/" target="_blank">教學：如何取得 csv 檔案格式</a>
+    </div>
+    <div style="margin-bottom: 2vh">
+      <button id="download">
+        重新命名並下載 </button>
+      <a id="link" download style="display: none">shouldnt be visible</a>
+    </div>
+    <table style="width:50%; text-align:left; ">
+      <tr style="text-decoration: underline;">
+        <th>File Uploaded</th>
+        <th>Name List （報名編號 中文姓名）</th>
+      </tr>
+      <tr>
+        <td>
+          <div id="fileList" style="font-family: Monospace;">請上傳欲改名的檔案...</div>
+        </td>
+        <td>
+          <div id="nameList" style="font-family: Monospace;">請上傳csv檔...</div>
+        </td>
+      </tr>
+    </table>
+  </div>
+</body>
+
+<script type="text/javascript">
+  var fileList = [];
+  var lines = [];
+
+  var inputCSV = document.getElementById("csvInput");
+  inputCSV.addEventListener("change", function () {
+    if (this.files && this.files[0]) {
+      var file = this.files[0];
+      var reader = new FileReader();
+      reader.addEventListener("load", function (e) {
+        read_text = e.target.result;
+        getParsecsvdata(read_text);
+        console.log(lines);
+        nameListOutput = "";
+        for (var i = 0; i < lines.length; i++) {
+          if (lines[i][0] != undefined && lines[i][1] != undefined && lines[i][0] != '' && lines[i][1] != '')
+            nameListOutput += ('<div>' + lines[i][0] + ' ' + lines[i][1] + '</div>');
+        }
+        $("#nameList").html('');
+        $("#nameList").html(nameListOutput);
+      });
+      reader.readAsText(file);
+    }
+  });
+
+  var fileUpload = document.getElementById("input");
+  fileUpload.addEventListener("change", function () {
+    if (this.files) {
+      var file = this.files;
+      var fileNameList = []
+      var fileListOutput = '';
+      fileList = []
+      for (var i = 0; i < this.files.length; i++) {
+        fileList[i] = input.files.item(i);
+        fileNameList[i] = input.files.item(i).name;
+        fileListOutput += ('<div>' + fileNameList[i] + '</div>');
+      }
+      $("#fileList").html('');
+      $("#fileList").html(fileListOutput);
+    }
+  });
+
+  function getParsecsvdata(data) {
+    let parsedata = [];
+    let newLinebrk = data.split("\n");
+    for (var i = 0; i < newLinebrk.length; i++) {
+      parsedata.push(newLinebrk[i].split(","))
+    }
+    let header = parsedata[0];
+    lines = [];
+    for (var i = 1; i < newLinebrk.length; i++) {
+      let tarr = [];
+      for (var j = 0; j < header.length; j++) {
+        if (header[j] === "報名編號" || header[j] === "中文姓名")
+          tarr.push(parsedata[i][j]);
+      }
+      lines.push(tarr);
+    }
+    console.log(lines);
+  }
+
+  var downloadFileUrls = [];
+  var downloadFileNames = [];
+
+  var fileDownload = document.getElementById("download");
+  fileDownload.addEventListener("click", function () {
+    if (fileList == undefined || fileList.length == 0) {
+      alert("請上傳 pdf 檔案！");
+    }
+    else if (lines == undefined || lines.length == 0) {
+      alert("請上傳 csv 檔案！");
+    }
+    else if (fileList.length != lines.length) {
+      alert("上傳的 pdf 與 csv 數量不吻合！");
+    }
+    else {
+      for (var i = 0; i < fileList.length; i++) {
+        var newName = lines[i][0] + ' ' + lines[i][1] + '.pdf';
+        downloadFileNames[i] = newName;
+
+        var myNewFile = new File([fileList[i]], newName, {
+          lastModified: fileList[i].lastModified,
+          lastModifiedDate: fileList[i].lastModifiedDate,
+          type: fileList[i].type
+        });
+        var fileUrl = URL.createObjectURL(myNewFile);
+        downloadFileUrls[i] = fileUrl;
+      }
+      downloadMultipleFiles(downloadFileUrls);
+    }
+  });
+
+  var link = document.getElementById('link');
+  function downloadMultipleFiles(fileUrls) {
+    setTimeout(function () {
+      var fileIndex = downloadFileUrls.length * 1 - 1 * 1;
+      link.setAttribute('href', downloadFileUrls[fileIndex]);
+      link.setAttribute('download', downloadFileNames[fileIndex]);
+      link.click();
+      if (fileIndex > -1) {
+        downloadFileUrls.splice(fileIndex, 1);
+      }
+      if (downloadFileUrls.length > 0) {
+        downloadMultipleFiles(downloadFileUrls);
+      }
+      return;
+    }, 200); // if less than 200, not all files are downloaded in Firefox
+  }
+
+</script>
+
+</html>
